@@ -18,9 +18,9 @@ export default function AccountsList(){
       icon: <HomeIcon className = "w-7 h-7"/>
     },
     {
-      name:'View Accounts',
+      name:'Accounts',
       func: () =>{
-        setTab('View Accounts')
+        setTab('Accounts')
       },
       icon: <UserIcon className = "w-7 h-7"/>
     },

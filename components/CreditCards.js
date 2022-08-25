@@ -48,11 +48,10 @@ export default function CreditCards({selected}){
   return (
     <div className = {`absolute inset-0 h-full p-10 bg-neutral-900 ${tab} overflow-y-scroll removeScrollbar`}>
       <div className = "w-full mb-24">
-        <h1 className = "text-4xl font-semibold text-white">View Accounts</h1>
+        <h1 className = "text-4xl font-semibold text-white">Accounts</h1>
         <p className = "mt-2 text-neutral-400">View all accounts you have linked with us.</p>
       </div>
       <div className = "w-full h-full">
-
         {bankAccounts.map((bankAccount)=>(
           <>
             {bankAccount.error && (

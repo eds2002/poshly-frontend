@@ -51,7 +51,7 @@ const Login = () => {
       body:JSON.stringify({
         email:values.email,
         password:values.password
-      })
+      }),
     })
     const {code, message, jwt } = await loginResponse.json()
 
