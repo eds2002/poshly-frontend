@@ -42,7 +42,9 @@ const Login = () => {
   const handleSubmit = async (e) =>{
     e.preventDefault()
     // TODO, send user given data to api endpoint.
-    const loginResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN || 'stop playing'}/user/login`,{
+    const domain = process.env.NEXT_PUBLIC_DOMAIN
+    console.log(domain)
+    const loginResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/user/login`,{
       method:"POST",
       headers: {
         'Accept': 'application/json',
