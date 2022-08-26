@@ -35,15 +35,15 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort}) {
                   <span className = {`hidden lg:block ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Poshly</span>
                   <span className={`block lg:hidden ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>M</span>
                 </h1>
-                <UserProfile/>
-                <AccountsList/>
+                {/* <UserProfile/>
+                <AccountsList/> */}
             </div>
           <div className = "relative w-full h-full col-span-5 bg-neutral-900 rounded-tl-3xl rounded-bl-3xl removeScrollbar">
             <div className = "relative h-full p-10">
-              <Overview/>
+              {/* <Overview/>
               <CreditCards/>
               <Transactions/>
-              <Settings/>
+              <Settings/> */}
             </div>
           </div>
         </div>
