@@ -51,8 +51,8 @@ const Login = () => {
         'Content-Type': 'application/json',
         // Change to poshlyfinancedomain.com once we figure out the issue
         'Access-Control-Allow-Origin' : '*',
-        credentials: 'include',
       },
+      credentials:'include',
       body:JSON.stringify({
         email:values.email,
         password:values.password
