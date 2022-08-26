@@ -17,6 +17,7 @@ import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
 export default function Home({jwtDecodedUser, userAccounts,transactionsSort}) {
+  console.log(jwtDecodedUser,userAccounts,transactionsSort)
   const {setSignedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
