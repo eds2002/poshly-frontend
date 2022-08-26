@@ -51,7 +51,6 @@ const Login = () => {
         'Content-Type': 'application/json',
         // Change to poshlyfinancedomain.com once we figure out the issue
       },
-      credentials:'include',
       body:JSON.stringify({
         email:values.email,
         password:values.password
@@ -66,8 +65,6 @@ const Login = () => {
         const setCookieResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/cookie/set-cookie/${jwt}`,{
           method:"GET",
           credentials: "include",
-          'Access-Control-Allow-Origin' : '*',
-          'Access-Control-Allow-Credentials': true
         }) 
         const {code} = await setCookieResponse.json()
         switch(code){
