@@ -59,6 +59,7 @@ export const getServerSideProps = async (context)=>{
   try{
     const cookies = context.req.headers.cookie;
     const userJWT = cookies.slice(5)
+    console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
     if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
       const userAccounts = await getUserItems(decode(userJWT).userId)
       const userAccountsInfo = await getItemInfo(userAccounts)
@@ -103,10 +104,11 @@ export const getServerSideProps = async (context)=>{
   }catch(e){
     console.log("please work man",e)
     return {
-      redirect: {
-        permanent: false,
-        destination: "/"
-      }
+      // redirect: {
+      //   permanent: false,
+      //   destination: "/"
+      // }
+      props:{}
     }
   }
 }
