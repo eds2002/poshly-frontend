@@ -50,7 +50,7 @@ const Login = () => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         // Change to poshlyfinancedomain.com once we figure out the issue
-        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Origin' : 'https://poshly-frontend.vercel.app/',
       },
       credentials:'include',
       body:JSON.stringify({
