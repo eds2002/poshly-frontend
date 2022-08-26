@@ -66,6 +66,8 @@ const Login = () => {
         const setCookieResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/cookie/set-cookie/${jwt}`,{
           method:"GET",
           credentials: "include",
+          'Access-Control-Allow-Origin' : '*',
+          'Access-Control-Allow-Credentials': true
         }) 
         const {code} = await setCookieResponse.json()
         switch(code){
