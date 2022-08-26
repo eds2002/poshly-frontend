@@ -16,8 +16,8 @@ import { getAccountTransactions } from '../../function/getAccountTransactions';
 import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
-export default function Home({jwtDecodedUser, userAccounts,transactionsSort}) {
-  console.log(jwtDecodedUser,userAccounts,transactionsSort)
+export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies}) {
+  console.log(jwtDecodedUser,userAccounts,transactionsSort,cookies)
   const {setSignedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
@@ -61,7 +61,7 @@ export const getServerSideProps = async (context)=>{
     const cookies = context.req.headers.cookie;
     const userJWT = cookies.slice(5)
     console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
-    if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
+    // if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
       const userAccounts = await getUserItems(decode(userJWT).userId)
       const userAccountsInfo = await getItemInfo(userAccounts)
       const accountsLiabilities = await getAccountLiabilities(userAccounts)
@@ -98,9 +98,9 @@ export const getServerSideProps = async (context)=>{
       
 
       return{
-        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null}
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:cookies}
       }
-    }
+    // }
     throw error
   }catch(e){
     console.log("please work man",e)

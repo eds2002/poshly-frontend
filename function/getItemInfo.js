@@ -13,10 +13,10 @@ const accountInfo = await  Promise.all(userAccounts.map(async (account)=>{
   })
   const getBalanceResponse = await fetch(`${process.env.DOMAIN}/api/balance/${account.access_token}`, {
     method:"GET",
-    // FOR DEV TESTING PURPOSES
-    agent: new https.Agent({
-      rejectUnauthorized: false
-    })
+    // // FOR DEV TESTING PURPOSES
+    // agent: new https.Agent({
+    //   rejectUnauthorized: false
+    // })
   })
   const {institution} = await getItemResponse.json()
   const {accounts,error} = await getBalanceResponse.json()

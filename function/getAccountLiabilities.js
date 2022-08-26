@@ -5,10 +5,10 @@ export const getAccountLiabilities = async(accounts) =>{
     const getLiabilities = await fetch(`${process.env.DOMAIN}/api/liabilities/${account.access_token}`, {
       method:"GET",
 
-      // FOR DEV TESTING PURPOSES
-      agent: new https.Agent({
-        rejectUnauthorized: false
-      })
+      // // FOR DEV TESTING PURPOSES
+      // agent: new https.Agent({
+      //   rejectUnauthorized: false
+      // })
     })
 
     const {error, liabilities} = await getLiabilities.json()

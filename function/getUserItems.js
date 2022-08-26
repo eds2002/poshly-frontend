@@ -1,4 +1,4 @@
-const https = require('https')
+// const https = require('https')
 
 
 export const getUserItems = async (userId) =>{
@@ -8,10 +8,10 @@ export const getUserItems = async (userId) =>{
       'Content-Type': 'application/json'
     },
 
-    // FOR DEV TESTING PURPOSES
-    agent: new https.Agent({
-      rejectUnauthorized: false
-    })
+    // // FOR DEV TESTING PURPOSES
+    // agent: new https.Agent({
+    //   rejectUnauthorized: false
+    // })
   }) 
 
   const {code,message,accounts} = await getItemsResponse.json()
