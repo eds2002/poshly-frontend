@@ -49,6 +49,7 @@ const Login = () => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        // Change to poshlyfinancedomain.com once we figure out the issue
         'Access-Control-Allow-Origin' : '*'
       },
       body:JSON.stringify({
@@ -57,7 +58,7 @@ const Login = () => {
       }),
     })
     const {code, message, jwt } = await loginResponse.json()
-
+    console.log(code,message,jwt)
     switch(code){
       // TODO, if code returned is successful (201), set cookie in header using 'set-cookie' endpoint
       // ...If more errors appear, add as you go.
@@ -69,7 +70,8 @@ const Login = () => {
         const {code} = await setCookieResponse.json()
         switch(code){
           case 201:
-            router.push('/user/dashboard')
+            console.log(code)
+            // router.push('/user/dashboard')
             break;
           case 401:
             alert('yo ngl error in something you did bro')
