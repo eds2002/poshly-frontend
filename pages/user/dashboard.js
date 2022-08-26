@@ -60,7 +60,13 @@ export const getServerSideProps = async (context)=>{
   try{
     const cookies = context.req.headers.cookie;
     const userJWT = cookies.slice(5)
-    console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
+    const validCookie = await fetch(`${process.env.DOMAIN}/cookie/verify`,{
+      method:"GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }) 
+    // console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
     // if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
       const userAccounts = await getUserItems(decode(userJWT).userId)
       const userAccountsInfo = await getItemInfo(userAccounts)
@@ -98,7 +104,7 @@ export const getServerSideProps = async (context)=>{
       
 
       return{
-        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:cookies}
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:validCookie}
       }
     // }
     throw error
