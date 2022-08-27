@@ -26,18 +26,18 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
   useEffect(()=>{
     setBankAccounts(userAccounts)
   },[])
-  const test = async () =>{
-    console.log('ok starting functuin')
-    const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
-      method:"GET",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    }) 
-    const {data, code} = validCookie.json()
-    console.log("in react return",data,code)
-  }
-  test()
+  // const test = async () =>{
+  //   console.log('ok starting functuin')
+  //   const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
+  //     method:"GET",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //   }) 
+  //   const {data, code} = validCookie.json()
+  //   console.log("in react return",data,code)
+  // }
+  // test()
   return (
     <main>
       <section className = {`w-full h-screen mx-auto overflow-hidden ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}>
