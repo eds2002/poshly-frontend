@@ -34,7 +34,8 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
         'Content-Type': 'application/json'
       },
     }) 
-    console.log('from build time',validCookie)
+    const {data, code} = validCookie.json()
+    console.log("in react return",data,code)
   }
   test()
   return (
@@ -77,6 +78,7 @@ export const getServerSideProps = async (context)=>{
         'Content-Type': 'application/json'
       },
     }) 
+    const {data,code} = validCookie.json()
     // console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
     // if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
       const userAccounts = await getUserItems(decode(userJWT).userId)
@@ -115,7 +117,7 @@ export const getServerSideProps = async (context)=>{
       
 
       return{
-        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:validCookie}
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:data}
       }
     // }
     throw error
