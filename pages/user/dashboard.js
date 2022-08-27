@@ -26,6 +26,17 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
   useEffect(()=>{
     setBankAccounts(userAccounts)
   },[])
+  const test = async () =>{
+    const validCookie = await fetch(`${process.env.DOMAIN}/cookie/verify`,{
+      method:"GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }) 
+    const data = await validCookie.json()
+    console.log(data)
+  }
+  test()
   return (
     <main>
       <section className = {`w-full h-screen mx-auto overflow-hidden ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}>
