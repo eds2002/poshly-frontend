@@ -141,7 +141,7 @@ export const getServerSideProps = async (context)=>{
       
 
       return{
-        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:test, testcookie:data}
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:test || 'couldnt get cookie', testcookie:data || 'couldnt get cookie'}
       }
     // }
     throw error
