@@ -47,7 +47,6 @@ const Login = () => {
     const loginResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/user/login`,{
       method:"POST",
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
         // Change to poshlyfinancedomain.com once we figure out the issue
       },
@@ -64,6 +63,10 @@ const Login = () => {
       case 201:
         const setCookieResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/cookie/set-cookie/${jwt}`,{
           method:"GET",
+          credentials: "include",
+          headers:{
+            'Content-Type': 'application/json',
+          }
           // credentials: "include",
         }) 
         const {code} = await setCookieResponse.json()
