@@ -34,8 +34,7 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
         'Content-Type': 'application/json'
       },
     }) 
-    const data = await validCookie.json()
-    console.log(data)
+    console.log(validCookie)
   }
   test()
   return (
