@@ -16,16 +16,20 @@ import { getAccountTransactions } from '../../function/getAccountTransactions';
 import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
-export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies,test}) {
+export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies}) {
   console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
-  console.log('from static props',test)
+  // console.log('from static props',test)
   const {setSignedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
   const {bankAccounts,setBankAccounts} = useContext(ItemsContext)
-  const res = await fetch('https://www.api.poshlyfinance.com/cookie/verify')
-  const test = await res.json()
-  console.log('in react component',test)
+
+
+  // const res = await fetch('https://www.api.poshlyfinance.com/cookie/verify')
+  // const test = await res.json()
+  // console.log('in react component',test)
+
+  
   setSignedUser(jwtDecodedUser)
   useEffect(()=>{
     setBankAccounts(userAccounts)
