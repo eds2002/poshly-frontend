@@ -68,15 +68,15 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
   )
 }
 
-export async function getStaticProps(){
-  const res = await fetch('https://www.api.poshlyfinance.com/cookie/verify')
-  const test = await res.json()
-  return {
-    props:{
-      test,
-    }
-  }
-}
+// export async function getStaticProps(){
+//   const res = await fetch('https://www.api.poshlyfinance.com/cookie/verify')
+//   const test = await res.json()
+//   return {
+//     props:{
+//       test,
+//     }
+//   }
+// }
 
 export const getServerSideProps = async (context)=>{
   // verifyToken()
