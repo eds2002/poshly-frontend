@@ -16,7 +16,8 @@ import { getAccountTransactions } from '../../function/getAccountTransactions';
 import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
-export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies}) {
+export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies,testcookie}) {
+  console.log(testcookie)
   console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
   // console.log('from static props',test)
   const {setSignedUser} = useContext(UserContext)
@@ -93,13 +94,13 @@ export const getServerSideProps = async (context)=>{
     const test = context.req.cookies
 
 
-    // const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
-    //   method:"GET",
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    // }) 
-    // const {data,code} = validCookie.json()
+    const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
+      method:"GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }) 
+    const {data,code} = validCookie.json()
 
 
     // console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
@@ -140,7 +141,7 @@ export const getServerSideProps = async (context)=>{
       
 
       return{
-        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:test}
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:test, testcookie:data}
       }
     // }
     throw error
