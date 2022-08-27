@@ -28,7 +28,7 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
   },[])
   const test = async () =>{
     console.log('ok starting functuin')
-    const validCookie = await fetch(`https://poshly-frontend.vercel.app/cookie/verify`,{
+    const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
       method:"GET",
       headers: {
         'Content-Type': 'application/json'
