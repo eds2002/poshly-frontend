@@ -68,8 +68,8 @@ const Login = () => {
           method:"GET",
           headers:{
             'Content-Type': 'application/json',
-          }
-          // credentials: "include",
+          },
+          credentials: "include",
         }) 
         const {code} = await setCookieResponse.json()
         switch(code){
