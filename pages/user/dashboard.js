@@ -90,6 +90,7 @@ export const getServerSideProps = async (context)=>{
   try{
     const cookies = context.req.headers.cookie;
     const userJWT = cookies.slice(5)
+    const test = context.req.cookies
 
 
     // const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
@@ -139,7 +140,7 @@ export const getServerSideProps = async (context)=>{
       
 
       return{
-        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:data}
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:cookies}
       }
     // }
     throw error
