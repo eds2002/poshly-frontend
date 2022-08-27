@@ -23,6 +23,9 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
   const {bankAccounts,setBankAccounts} = useContext(ItemsContext)
+  const res = await fetch('https://www.api.poshlyfinance.com/cookie/verify')
+  const test = await res.json()
+  console.log('in react component',test)
   setSignedUser(jwtDecodedUser)
   useEffect(()=>{
     setBankAccounts(userAccounts)
