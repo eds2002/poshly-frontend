@@ -17,7 +17,7 @@ import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
 export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies}) {
-  console.log(jwtDecodedUser,userAccounts,transactionsSort,cookies)
+  console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
   const {setSignedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
@@ -34,7 +34,7 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
         'Content-Type': 'application/json'
       },
     }) 
-    console.log(validCookie)
+    console.log('from build time',validCookie)
   }
   test()
   return (
@@ -71,7 +71,7 @@ export const getServerSideProps = async (context)=>{
   try{
     const cookies = context.req.headers.cookie;
     const userJWT = cookies.slice(5)
-    const validCookie = await fetch(`${process.env.DOMAIN}/cookie/verify`,{
+    const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
       method:"GET",
       headers: {
         'Content-Type': 'application/json'
