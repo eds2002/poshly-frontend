@@ -16,8 +16,9 @@ import { getAccountTransactions } from '../../function/getAccountTransactions';
 import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
-export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies}) {
-  console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
+export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies,test}) {
+  // console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
+  console.log('from static props',test)
   const {setSignedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
@@ -62,6 +63,16 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
       </section>
     </main>
   )
+}
+
+export async function getStaticProps(){
+  const res = await fetch('https://www.api.poshlyfinance.com/cookie/verify')
+  const test = await res.json()
+  return {
+    props:{
+      test,
+    }
+  }
 }
 
 export const getServerSideProps = async (context)=>{
