@@ -27,7 +27,8 @@ export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cook
     setBankAccounts(userAccounts)
   },[])
   const test = async () =>{
-    const validCookie = await fetch(`${process.env.DOMAIN}/cookie/verify`,{
+    console.log('ok starting functuin')
+    const validCookie = await fetch(`https://poshly-frontend.vercel.app/cookie/verify`,{
       method:"GET",
       headers: {
         'Content-Type': 'application/json'
