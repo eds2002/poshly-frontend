@@ -17,7 +17,7 @@ import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
 export default function Home({jwtDecodedUser, userAccounts,transactionsSort,cookies,test}) {
-  // console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
+  console.log(jwtDecodedUser,userAccounts,transactionsSort,'from server side:',cookies)
   console.log('from static props',test)
   const {setSignedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
@@ -78,73 +78,77 @@ export async function getStaticProps(){
   }
 }
 
-// export const getServerSideProps = async (context)=>{
-//   // verifyToken()
-//   // return{
-//   //   props:{}
-//   // }
-//   try{
-//     const cookies = context.req.headers.cookie;
-//     const userJWT = cookies.slice(5)
-//     const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
-//       method:"GET",
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//     }) 
-//     const {data,code} = validCookie.json()
-//     // console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
-//     // if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
-//       const userAccounts = await getUserItems(decode(userJWT).userId)
-//       const userAccountsInfo = await getItemInfo(userAccounts)
-//       const accountsLiabilities = await getAccountLiabilities(userAccounts)
-//       // const accountTransactions = await getAccountTransactions(userAccounts)
-//       // TODO, format items, bankaccounts, and bank account liabilities into one object
-//       // NOTE, if theres an easier way of doing this pls redo
-//       let formatAccounts = []
+export const getServerSideProps = async (context)=>{
+  // verifyToken()
+  // return{
+  //   props:{}
+  // }
+  try{
+    const cookies = context.req.headers.cookie;
+    const userJWT = cookies.slice(5)
 
-//       // TODO, add to formatAccounts arr.
-//       userAccountsInfo.forEach((userAccount)=>{
-//         formatAccounts.push(userAccount)
-//       })
 
-//       // TODO, loop accountsLiabilities
-//       accountsLiabilities.forEach((accountLiability)=>{
-//         if(accountLiability.accounts){
-//           // TODO, loop through format accounts, and check if theres a match
-//           formatAccounts.forEach((account,formatAccountIndex)=>{
-//             accountLiability.liabilities?.credit?.forEach((accLiability)=>{
-//               // TODO, if theres a match between account ids, get the position number
-//               const pos = account.accounts?.findIndex(account=> account.account_id === accLiability.account_id)
-//               if(pos === undefined){
-//                 return
-//               }
+    // const validCookie = await fetch(`https://www.api.poshlyfinance.com/cookie/verify`,{
+    //   method:"GET",
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    // }) 
+    // const {data,code} = validCookie.json()
 
-//               // TODO, set new found information into array, positions formataccoutns using the formataccount index, and 
-//               // the accounts with  the new found position
-//               formatAccounts[formatAccountIndex].accounts[pos] = {...formatAccounts[formatAccountIndex].accounts[pos], accLiability } 
-//             })
-//           })
-//         }
-//       })
+
+    // console.log(cookies,userJWT,process.env.ACCESS_TOKEN_SECRET)
+    // if(verify(userJWT,process.env.ACCESS_TOKEN_SECRET)){
+      const userAccounts = await getUserItems(decode(userJWT).userId)
+      const userAccountsInfo = await getItemInfo(userAccounts)
+      const accountsLiabilities = await getAccountLiabilities(userAccounts)
+      // const accountTransactions = await getAccountTransactions(userAccounts)
+      // TODO, format items, bankaccounts, and bank account liabilities into one object
+      // NOTE, if theres an easier way of doing this pls redo
+      let formatAccounts = []
+
+      // TODO, add to formatAccounts arr.
+      userAccountsInfo.forEach((userAccount)=>{
+        formatAccounts.push(userAccount)
+      })
+
+      // TODO, loop accountsLiabilities
+      accountsLiabilities.forEach((accountLiability)=>{
+        if(accountLiability.accounts){
+          // TODO, loop through format accounts, and check if theres a match
+          formatAccounts.forEach((account,formatAccountIndex)=>{
+            accountLiability.liabilities?.credit?.forEach((accLiability)=>{
+              // TODO, if theres a match between account ids, get the position number
+              const pos = account.accounts?.findIndex(account=> account.account_id === accLiability.account_id)
+              if(pos === undefined){
+                return
+              }
+
+              // TODO, set new found information into array, positions formataccoutns using the formataccount index, and 
+              // the accounts with  the new found position
+              formatAccounts[formatAccountIndex].accounts[pos] = {...formatAccounts[formatAccountIndex].accounts[pos], accLiability } 
+            })
+          })
+        }
+      })
 
       
 
-//       return{
-//         props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:data}
-//       }
-//     // }
-//     throw error
-//   }catch(e){
-//     console.log("please work man",e)
-//     return {
-//       // redirect: {
-//       //   permanent: false,
-//       //   destination: "/"
-//       // }
-//       props:{}
-//     }
-//   }
-// }
+      return{
+        props:{jwtDecodedUser: decode(userJWT), userAccounts: formatAccounts || null, cookies:data}
+      }
+    // }
+    throw error
+  }catch(e){
+    console.log("please work man",e)
+    return {
+      // redirect: {
+      //   permanent: false,
+      //   destination: "/"
+      // }
+      props:{}
+    }
+  }
+}
 
 
