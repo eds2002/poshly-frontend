@@ -51,7 +51,7 @@ const ProfileSettings = () => {
 
 
   return (
-    <div className = "w-full h-auto ">
+    <div className = "w-full h-auto pb-24">
       <h1 className = "text-2xl font-medium text-white">Personal Information</h1>
       <form className = "flex flex-col pb-16">
           {inputs.map(({id,label,...inputAttrs})=>(

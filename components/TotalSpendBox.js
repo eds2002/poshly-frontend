@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
 
 import { useState } from 'react'
-const TotalSpendBox = ({display, timeframe, userLocale}) => {
+const TotalSpendBox = ({display, timeframe, userLocale, setOpenTrackSpending}) => {
 
   const [totalSpend, setTotalSpend] = useState(0)
+
+  const handleClick = () =>{
+    setOpenTrackSpending(true)
+  }
 
   useEffect(()=>{
     setTotalSpend(0)
@@ -52,11 +56,16 @@ const TotalSpendBox = ({display, timeframe, userLocale}) => {
     return(()=>{})
   },[timeframe, display])
   return (
-    <div className = "col-span-2 p-6 bg-sky-600 rounded-xl xl:col-span-1">
-      <span className = "text-neutral-300 text-">Total Spent</span>
-      <p className = "text-2xl font-medium text-white">{parseFloat(totalSpend).toLocaleString(userLocale,{style:'currency',currency:display.balances?.iso_currency_code || 'USD'})}</p>
-      <p className = "mt-2 text-sm text-neutral-300/75">Within <b>{timeframe}</b></p>
-    </div>
+      <div className = {`
+      ${display.subtype === 'credit card' && ('col-span-4 p-6 bg-sky-600 rounded-xl xl:col-span-4')}
+      ${display.subtype === 'checking' && ('col-span-4 p-6 bg-sky-600 rounded-xl xl:col-span-2')}
+      `}
+      onClick = {()=>handleClick()}
+      >
+        <span className = "text-neutral-300 text-">Total Spent</span>
+        <p className = "text-2xl font-medium text-white">{parseFloat(totalSpend).toLocaleString(userLocale,{style:'currency',currency:display.balances?.iso_currency_code || 'USD'})}</p>
+        <p className = "mt-2 text-sm text-neutral-300/75">Within <b>{timeframe}</b></p>
+      </div>
   )
 }
 

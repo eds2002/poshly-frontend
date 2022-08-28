@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { ChevronLeftIcon } from "@heroicons/react/solid"
+import { TabContext } from "../context/currentTab"
 
 
 
 const TimeFilter = ({setTimeframe,timeframe, display}) => {
+  const {tab} = useContext(TabContext)
   const filters = ['6 months','12 months','24 months','YTD']
   const [currentFilter, setCurrentFilter] = useState(timeframe)
   const [displayFilters, setDisplayFilters] = useState(false)
@@ -15,15 +17,13 @@ const TimeFilter = ({setTimeframe,timeframe, display}) => {
 
   useEffect(()=>{
     setTimeframe(currentFilter)
-    console.log('infinitelooptest')
     return(()=>{})
   },[currentFilter])
 
   useEffect(()=>{
     setTimeframe('6 months')
     setCurrentFilter('6 months')
-    console.log('infinitelooptest')
-  },[display])
+  },[tab])
 
 
   return (

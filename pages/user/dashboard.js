@@ -87,8 +87,8 @@ export default function Home() {
   return (
     <>
       {loading ? 
-        <div className = "fixed inset-0 flex items-center justify-center">
-          <h1>Loading your data</h1>
+        <div className = "fixed inset-0 flex items-center justify-center text-white bg-neutral-900 ">
+          <h1 className = "text-3xl font-bold animate-pulse">Loading your data</h1>
         </div>
         :
         <main>

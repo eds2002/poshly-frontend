@@ -72,66 +72,71 @@ export default function CreditCards({selected}){
           </>
         ))}
 
-        {bankAccounts.map((bankAccount)=>(
-        <>
-          {/* TODO, handle cards with error */}
-          {!bankAccount.error &&
-            <>
-            {bankAccount.accounts.findIndex(object => object.subtype === 'credit card') === 0 && (
-              <div className = "my-24">
-              <p className = "mb-2 text-sm font-medium text-neutral-400">Credit Accounts</p>
-              <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
-                {bankAccount.accounts.map((acc)=>(
+        <div className = "my-24">
+          <p className = "mb-2 text-sm font-medium text-neutral-400">Credit Cards</p>
+          <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
+            {bankAccounts.map((bankAccount)=>(
+              <>
+                {/* TODO, handle cards with error */}
+                {!bankAccount.error && (
                   <>
-                    {acc.subtype == 'credit card' && (
-                    <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
-                      <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
-                      <div className = "mt-2">
-                        <p className = "flex flex-col text-xl text-neutral-400">
-                          <span className = "text-sm text-gray-200">Total Balance</span>
-                          <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
-                        </p>
+                  {bankAccount.accounts.map((acc)=>(
+                    <>
+                      {acc.subtype == 'credit card' && (
+                      <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
+                        <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
+                        <div className = "mt-2">
+                          <p className = "flex flex-col text-xl text-neutral-400">
+                            <span className = "text-sm text-gray-200">Total Balance</span>
+                            <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
+                          </p>
+                        </div>
+                        <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
+                        onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
+                        >View Account</button>
                       </div>
-                      <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
-                      onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
-                      >View Account</button>
-                    </div>
-                    )}
+                      )}
+                    </>
+                  ))}
                   </>
-                ))}
-              </div>
-              </div>
-            )}
+                )}
+              </>
+            ))}
+          </div>
+        </div>
 
-            {bankAccount.accounts.findIndex(object => object.subtype === 'checking') === 0 && (
-              <div className = "my-24">
-              <p className = "mb-2 text-sm font-medium text-neutral-400">Checking Accounts</p>
-              <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
-                {bankAccount.accounts.map((acc)=>(
+        <div className = "my-24">
+          <p className = "mb-2 text-sm font-medium text-neutral-400">Checking Accounts</p>
+          <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
+            {bankAccounts.map((bankAccount)=>(
+              <>
+                {/* TODO, handle cards with error */}
+                {!bankAccount.error && (
                   <>
-                    {acc.subtype == 'checking' && (
-                    <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
-                      <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
-                      <div className = "mt-2">
-                        <p className = "flex flex-col text-xl text-neutral-400">
-                          <span className = "text-sm text-gray-200">Total Balance</span>
-                          <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
-                        </p>
+                  {bankAccount.accounts.map((acc)=>(
+                    <>
+                      {acc.subtype == 'checking' && (
+                      <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
+                        <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
+                        <div className = "mt-2">
+                          <p className = "flex flex-col text-xl text-neutral-400">
+                            <span className = "text-sm text-gray-200">Total Balance</span>
+                            <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
+                          </p>
+                        </div>
+                        <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
+                        onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
+                        >View Account</button>
                       </div>
-                      <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
-                      onClick = {()=>viewTransactions(bankAccount.accessToken,acc.account_id)}
-                      >View Transactions</button>
-                    </div>
-                    )}
+                      )}
+                    </>
+                  ))}
                   </>
-                ))}
-              </div>
-              </div>
-            )}
-            </>
-          }
-        </>
-        ))}
+                )}
+              </>
+            ))}
+          </div>
+        </div>
 
 
         

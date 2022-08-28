@@ -28,7 +28,7 @@ export default function Transactions(){
   const [display, setDisplay] = useState(null)
   const [timeframe, setTimeframe] = useState('6 months')
   const [sortBy, setSortBy] = useState()
-
+  console.log(bankAccounts)
   
   // TODO, use effect is used to handle the display for this component. 
   // It depends on the transactionsId state which is being set on the credit cards
@@ -55,11 +55,20 @@ export default function Transactions(){
     // TODO, error handling, this is if the user chooses to view their checkings.
     if(!display?.accLiability) return
 
-    // TODO, cannot display penalties if custom amoutn is greater than the statement balance.
+    // TODO, if minium penalty is 0, set penalty to 0, you cannot get charged penalties if your minimum is 0
+    // 0 minimum means no statement to pay.
+    if(display.accLiability.minimum_payment_amount === 0){
+      setPenalty(0)
+      return
+    }
+    
+    // TODO, cannot display penalties if custom amount is greater than the statement balance.
     if(displayAmount >= display?.accLiability?.last_statement_balance){
       setPenalty(0)
       return
     }
+
+    // TODO, figure out penalty charges through users APR, if APR is not found, use default of 29.99%
     const apr = display.accLiability?.aprs.filter(apr => apr.apr_type === 'purchase_apr') || 29.99
     const penalty = ((apr[0]?.apr_percentage || 29.99 / 100).toFixed(4) / 12 * display.balances?.current) - ((apr[0]?.apr_percentage || 29.99 / 100).toFixed(4) / 12 * displayAmount)
     setPenalty(penalty.toFixed(2))
@@ -79,31 +88,6 @@ export default function Transactions(){
       isMounted=false
     })
   },[])
-
-  
-  const formatDate = (e) =>{
-    // TODO, return formatted date for a better user experience
-    const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
-    if(!e){
-      return  
-    }
-    // TODO, split the given date, usually in the format yyyy-mm-dd
-    const splitDate = e.split("-")
-    const month = months[parseInt(splitDate[1]) -1]
-    const year = splitDate[0]
-    const day = splitDate[2]
-    return{month,year,day}
-  }
-
-  // TODO, everytime a user leaves the transactions page/component, set the default timeframe to 6 months, this way
-  // weird ui glitches are avoided. 
-  useEffect(()=>{
-    console.log('ok bro')
-    if(tab != 'Transactions'){
-      setTimeframe('6 months')
-    }
-  },[tab])
-
 
   // TODO, used effect is used to filter out transactions for the categories section. Only runs when the display state changes
   useEffect(()=>{
@@ -393,7 +377,7 @@ return (
                 </h1>
                 <p className = "mt-2 text-neutral-400">View all your most recent transactions.</p>
               </div>
-              <div className = "grid w-full grid-cols-4 gap-3 my-2 xl:grid-cols-3 rounded-xl">
+              <div className = {`grid w-full grid-cols-4 gap-3 my-2 xl:grid-cols-4 rounded-xl`}>
                   {display.accLiability ? 
                     <>
                       <CreditLiabilityBox display = {display} displayAmount = {displayAmount} userLocale = {userLocale} penalty = {penalty}/>
@@ -403,8 +387,14 @@ return (
                       <CheckingInfoBox displayAmount = {displayAmount} userLocale = {userLocale} display = {display}/>
                     </>
                   }
-                  <TotalEarnedBox display = {display} timeframe = {timeframe} userLocale = {userLocale}/>
-                  <TotalSpendBox display = {display} timeframe = {timeframe} userLocale = {userLocale}/>
+                  {display.subtype === 'credit card' ? 
+                    <TotalSpendBox display = {display} timeframe = {timeframe} userLocale = {userLocale} setOpenTrackSpending = {setOpenTrackSpending}/>
+                  :
+                  <>
+                    <TotalSpendBox display = {display} timeframe = {timeframe} userLocale = {userLocale} setOpenTrackSpending = {setOpenTrackSpending}/>
+                    <TotalEarnedBox display = {display} timeframe = {timeframe} userLocale = {userLocale}/>
+                  </>
+                  }
               </div>
 
               {/* Custom payments slider, only available for credit card accounts. */}
@@ -450,7 +440,6 @@ return (
                     ))}
                   </>
                 )}
-
               </div>
             </div>
             

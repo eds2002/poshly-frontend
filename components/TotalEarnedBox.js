@@ -63,7 +63,10 @@ const TotalEarnedBox = ({display, timeframe, userLocale}) => {
 
 
   return (
-    <div className = "col-span-2 p-6 bg-indigo-600 rounded-xl xl:col-span-1">
+    <div className = {`
+    ${display.subtype === 'credit card' && ('col-span-4 p-6 bg-indigo-600 rounded-xl xl:col-span-4')}
+    ${display.subtype === 'checking' && ('col-span-4 p-6 bg-indigo-600 rounded-xl xl:col-span-2')}
+    `}>
       <span className = "text-neutral-300 ">Total earned</span>
       <p className = "text-2xl font-medium text-white">{parseFloat(totalEarned).toLocaleString(userLocale,{style:'currency',currency:display.balances?.iso_currency_code || 'USD'})}</p>
       <p className = "mt-2 text-sm text-neutral-300/75">Within <b>{timeframe}</b></p>

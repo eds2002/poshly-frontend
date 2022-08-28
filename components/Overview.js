@@ -60,23 +60,29 @@ const Overview = () => {
           // TODO, get how many days are left till the user has to pay.
           const today = new Date()
           const dueDate = new Date(account.accLiability.next_payment_due_date)
+          if(account.accLiability.minimum_payment_amount === 0){
+            dueDate.setMonth(dueDate.getMonth() + 1)
+          }
           const differenceInTime = dueDate.getTime() - today.getTime()
           const differenceInDays = differenceInTime / (1000 * 3600 * 24)
           if(differenceInDays < 0){
             return  
           }
 
+          console.log(account)
+
           // TODO, create an object displaying necessary information.
           const cardObj = {
             account:account,
             due:account.balances.current,
-            statement:account.accLiability.last_statement_balance, 
+            statement:account.accLiability.last_statement_balance - account.accLiability.last_payment_amount,
             minimumDue: account.accLiability.minimum_payment_amount,
             daysTillDue: parseInt(differenceInDays),
             dueDate: account.accLiability.next_payment_due_date,
             currencyCode: account.balances.iso_currency_code,
           }
           creditCardsLiability.push(cardObj)
+          console.log(cardObj)
         })
       })
   
@@ -110,14 +116,14 @@ const Overview = () => {
         <p className = "mt-2 text-neutral-400">Let&apos;s give you a quick overview of your current week.</p>
       </div>
       <div className = "w-full h-full">
-        <p className = "mb-2 text-sm font-medium text-neutral-400">Helpful cards</p>
         <div className = "grid grid-cols-6 gap-6 ">
           <div className = "relative w-full col-span-6 p-6 shadow-xl lg:col-span-2 bg-zinc-800 rounded-xl">
             <CashIcon className = "mb-2 text-white w-14 h-14"/>
             <h1 className = "text-3xl font-medium text-white">{totalDebt?.toLocaleString(userLocale, {style:'currency', currency:'USD'})}</h1>
-            <p className = "text-sm text-neutral-400">Total credit card debt</p>
+            <p className = "mt-1 text-sm text-neutral-400">Total credit card debt</p>
           </div>
 
+          {/* Only show cards that are due within 30 days */}
           {debtDueSoon?.length != 0 && (
             <div className = "relative w-full col-span-6 p-6 shadow-xl lg:col-span-4 bg-zinc-800 rounded-xl">
               <CreditCardIcon className = "mb-2 text-white w-14 h-14"/>
@@ -125,33 +131,28 @@ const Overview = () => {
               <div className = "grid w-full grid-cols-1 gap-6 p-4 my-2 sm:grid-cols-2 bg-zinc-900 rounded-xl">
                 {debtDueSoon?.map((debt,index)=>(
                 <>
-                  {debt?.due > 0 && (
-                    <div className = {`${index === 0 ? ('sm:col-span-2 bg-neutral-500 p-4 rounded-xl') : ('sm:col-span-1 bg-neutral-600/50 rounded-xl p-4')}`}>
-                      <p className = 'flex flex-wrap items-center justify-start gap-2 text-xs'>
-                        <span className = "font-medium text-neutral-300">{debt.account.name}</span>
-                        <span className = "text-neutral-300">*{debt.account.mask}</span>
-                      </p>
-                      <p className = "mt-4 text-sm text-neutral-300/75">
-                        {debt.statement ? 'Statement balance' : 'Total balance'}
-                      </p>
-                      <p className = "text-2xl font-medium text-white">{(debt.statement)?.toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode}) || (debt.due).toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode})}</p>
-                      <p className = "mt-4 text-sm text-neutral-300/75">
-                        <span>You have </span>
-                        <span className = "font-medium text-white">{debt.daysTillDue} </span>
-                        <span className = "font-medium text-white">{debt.daysTillDue === 1 ? 'day ' : 'days '}</span>
-                        <span>left to pay this off.</span>
-                      </p>
-                    </div>
-                  )}
-                  <>
-                    {debtDueSoon.length > 1 && (
-                      <>
-                      {!debt?.due === 0 && (
-                        <p className = "text-white">Some card</p>
+                  {index != 3 && (
+                    <>
+                      {(debt?.due > 0 && debt.daysTillDue < 30) && (
+                        <div className = {`${index === 0 ? ('sm:col-span-2 bg-neutral-500 p-4 rounded-xl') : ('sm:col-span-1 bg-neutral-600/50 rounded-xl p-4')}`}>
+                          <p className = 'flex flex-wrap items-center justify-start gap-2 text-xs'>
+                            <span className = "font-medium text-neutral-300">{debt.account.name}</span>
+                            <span className = "text-neutral-300">*{debt.account.mask}</span>
+                          </p>
+                          <p className = "mt-4 text-sm text-neutral-300/75">
+                            {debt.minimumDue != 0 ? 'Statement balance' : 'Total balance'}
+                          </p>
+                          <p className = "text-2xl font-medium text-white">{debt.minimumDue != 0 ? (debt.statement)?.toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode}) : (debt.due).toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode})}</p>
+                          <p className = "mt-4 text-sm text-neutral-300/75">
+                            <span>You have </span>
+                            <span className = "font-medium text-white">{debt.daysTillDue} </span>
+                            <span className = "font-medium text-white">{debt.daysTillDue === 1 ? 'day ' : 'days '}</span>
+                            <span>left to pay this off.</span>
+                          </p>
+                        </div>
                       )}
-                      </>
-                    )}
-                  </>
+                    </>
+                  )}
                 </>
                 ))}
               </div>
@@ -159,22 +160,24 @@ const Overview = () => {
           )}
         </div>
 
-        <p className = "mt-24 mb-2 text-sm font-medium text-neutral-400">Accounts needed extra action.</p>
-        <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl ">
-        {bankAccounts.map((bankAccount)=>(
-          <>
-          {bankAccount.error && (
-              <div className = "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md" key = {bankAccount.error}>
-                <h3 className = "mb-3 text-xl text-neutral-400">{bankAccount.institution}</h3>
-                <div className = "mb-5 text-sm text-neutral-600">
-                  <p className = "text-neutral-400">This account requires extra attention.</p>
-                  <p className = "text-xs">Error: {bankAccount.error}</p>
+        <div className = "pb-24">
+          <p className = "mt-24 mb-2 text-sm font-medium text-neutral-400">Accounts needed extra action.</p>
+          <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl ">
+          {bankAccounts.map((bankAccount)=>(
+            <>
+            {bankAccount.error && (
+                <div className = "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md" key = {bankAccount.error}>
+                  <h3 className = "mb-3 text-xl text-neutral-400">{bankAccount.institution}</h3>
+                  <div className = "mb-5 text-sm text-neutral-600">
+                    <p className = "text-neutral-400">This account requires extra attention.</p>
+                    <p className = "text-xs">Error: {bankAccount.error}</p>
+                  </div>
+                  <PlaidButton text = {bankAccount.error == 'ITEM_LOGIN_REQUIRED' && 'Relogin'} customCSS = 'w-full' removeOldItem = {bankAccount.id}/>
                 </div>
-                <PlaidButton text = {bankAccount.error == 'ITEM_LOGIN_REQUIRED' && 'Relogin'} customCSS = 'w-full' removeOldItem = {bankAccount.id}/>
-              </div>
-          )}
-        </>
-        ))} 
+            )}
+          </>
+          ))} 
+          </div>
         </div>
       </div>
     </div>
