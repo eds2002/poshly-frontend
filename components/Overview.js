@@ -118,51 +118,52 @@ const Overview = () => {
             <p className = "text-sm text-neutral-400">Total credit card debt</p>
           </div>
 
-          <div className = "relative w-full col-span-6 p-6 shadow-xl lg:col-span-4 bg-zinc-800 rounded-xl">
-            <CreditCardIcon className = "mb-2 text-white w-14 h-14"/>
-            <p className = 'text-xl font-medium text-white'>{debtDueSoon?.length > 1 ? ('Debts are due soon') : ('A debt is due soon.')}</p>
-            <div className = "grid w-full grid-cols-1 gap-6 p-4 my-2 sm:grid-cols-2 bg-zinc-900 rounded-xl">
-              {debtDueSoon?.map((debt,index)=>(
-              <>
-                {debt?.due > 0 && (
-                  <div className = {`${index === 0 ? ('sm:col-span-2 bg-neutral-500 p-4 rounded-xl') : ('sm:col-span-1 bg-neutral-600/50 rounded-xl p-4')}`}>
-                    <p className = 'flex flex-wrap items-center justify-start gap-2 text-xs'>
-                      <span className = "font-medium text-neutral-300">{debt.account.name}</span>
-                      <span className = "text-neutral-300">*{debt.account.mask}</span>
-                    </p>
-                    <p className = "mt-4 text-sm text-neutral-300/75">
-                      {debt.statement ? 'Statement balance' : 'Total balance'}
-                    </p>
-                    <p className = "text-2xl font-medium text-white">{(debt.statement)?.toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode}) || (debt.due).toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode})}</p>
-                    <p className = "mt-4 text-sm text-neutral-300/75">
-                      <span>You have </span>
-                      <span className = "font-medium text-white">{debt.daysTillDue} </span>
-                      <span className = "font-medium text-white">{debt.daysTillDue === 1 ? 'day ' : 'days '}</span>
-                      <span>left to pay this off.</span>
-                    </p>
-                  </div>
-                )}
+          {debtDueSoon?.length != 0 && (
+            <div className = "relative w-full col-span-6 p-6 shadow-xl lg:col-span-4 bg-zinc-800 rounded-xl">
+              <CreditCardIcon className = "mb-2 text-white w-14 h-14"/>
+              <p className = 'text-xl font-medium text-white'>{debtDueSoon?.length > 1 ? ('Debts are due soon') : ('A debt is due soon.')}</p>
+              <div className = "grid w-full grid-cols-1 gap-6 p-4 my-2 sm:grid-cols-2 bg-zinc-900 rounded-xl">
+                {debtDueSoon?.map((debt,index)=>(
                 <>
-                  {debtDueSoon.length > 1 && (
-                    <>
-                    {!debt?.due === 0 && (
-                      <p className = "text-white">Some card</p>
-                    )}
-                    </>
+                  {debt?.due > 0 && (
+                    <div className = {`${index === 0 ? ('sm:col-span-2 bg-neutral-500 p-4 rounded-xl') : ('sm:col-span-1 bg-neutral-600/50 rounded-xl p-4')}`}>
+                      <p className = 'flex flex-wrap items-center justify-start gap-2 text-xs'>
+                        <span className = "font-medium text-neutral-300">{debt.account.name}</span>
+                        <span className = "text-neutral-300">*{debt.account.mask}</span>
+                      </p>
+                      <p className = "mt-4 text-sm text-neutral-300/75">
+                        {debt.statement ? 'Statement balance' : 'Total balance'}
+                      </p>
+                      <p className = "text-2xl font-medium text-white">{(debt.statement)?.toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode}) || (debt.due).toLocaleString(userLocale, {style: 'currency', currency:debt.currencyCode})}</p>
+                      <p className = "mt-4 text-sm text-neutral-300/75">
+                        <span>You have </span>
+                        <span className = "font-medium text-white">{debt.daysTillDue} </span>
+                        <span className = "font-medium text-white">{debt.daysTillDue === 1 ? 'day ' : 'days '}</span>
+                        <span>left to pay this off.</span>
+                      </p>
+                    </div>
                   )}
+                  <>
+                    {debtDueSoon.length > 1 && (
+                      <>
+                      {!debt?.due === 0 && (
+                        <p className = "text-white">Some card</p>
+                      )}
+                      </>
+                    )}
+                  </>
                 </>
-              </>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <p className = "mt-24 mb-2 text-sm font-medium text-neutral-400">Accounts needed extra action.</p>
-        <div>
+        <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl ">
         {bankAccounts.map((bankAccount)=>(
           <>
           {bankAccount.error && (
-            <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
               <div className = "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md" key = {bankAccount.error}>
                 <h3 className = "mb-3 text-xl text-neutral-400">{bankAccount.institution}</h3>
                 <div className = "mb-5 text-sm text-neutral-600">
@@ -171,7 +172,6 @@ const Overview = () => {
                 </div>
                 <PlaidButton text = {bankAccount.error == 'ITEM_LOGIN_REQUIRED' && 'Relogin'} customCSS = 'w-full' removeOldItem = {bankAccount.id}/>
               </div>
-            </div>
           )}
         </>
         ))} 

@@ -2,7 +2,7 @@ const https = require('https')
 
 export const getAccountLiabilities = async(accounts) =>{
   const accountLiabilities = await Promise.all(accounts.map(async (account)=>{
-    const getLiabilities = await fetch(`${process.env.DOMAIN}/api/liabilities/${account.access_token}`, {
+    const getLiabilities = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/liabilities/${account.access_token}`, {
       method:"GET",
 
       // // FOR DEV TESTING PURPOSES

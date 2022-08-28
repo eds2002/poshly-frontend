@@ -3,7 +3,7 @@ const https = require('https')
 
 export const getItemInfo = async (userAccounts) =>{
 const accountInfo = await  Promise.all(userAccounts.map(async (account)=>{
-  const getItemResponse = await fetch(`${process.env.DOMAIN}/api/item/${account.access_token}`, {
+  const getItemResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/item/${account.access_token}`, {
     method:"GET",
 
     // FOR DEV TESTING PURPOSES
@@ -11,7 +11,7 @@ const accountInfo = await  Promise.all(userAccounts.map(async (account)=>{
     rejectUnauthorized: false
   })
   })
-  const getBalanceResponse = await fetch(`${process.env.DOMAIN}/api/balance/${account.access_token}`, {
+  const getBalanceResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/balance/${account.access_token}`, {
     method:"GET",
     // // FOR DEV TESTING PURPOSES
     // agent: new https.Agent({

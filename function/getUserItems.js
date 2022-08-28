@@ -2,7 +2,7 @@
 
 
 export const getUserItems = async (userId) =>{
-  const getItemsResponse = await fetch(`${process.env.DOMAIN}/account/get-items/${userId}`,{
+  const getItemsResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/account/get-items/${userId}`,{
     method:"GET",
     headers: {
       'Content-Type': 'application/json'
