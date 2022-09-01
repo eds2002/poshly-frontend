@@ -2441,7 +2441,7 @@ const getServerSideProps = async (context)=>{
         const cookies = context.req.headers.cookie;
         // TODO, verify HTTP cookie
         const userJWT = cookies.slice(5);
-        if ((0,external_jsonwebtoken_namespaceObject.verify)(userJWT, process.env.ACCESS_TOKEN_SECRET)) {
+        if ((0,external_jsonwebtoken_namespaceObject.verify)(userJWT, "d5302d81e8db842d83398b4cb1655adb4d3ff9c0c516794f29f07c4518ea48253284f521c67d63f34056e350a4178672f5a1771735194b5dd3e4a7e100eec3e3")) {
             return {
                 props: {
                     currentUser: (0,external_jsonwebtoken_namespaceObject.decode)(userJWT)

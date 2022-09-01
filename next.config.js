@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    ACCESS_TOKEN: process.env.ACCESS_TOKEN
+    ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET
   }
 }
 
