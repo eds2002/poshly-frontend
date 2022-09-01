@@ -5,160 +5,6 @@ exports.id = 894;
 exports.ids = [894];
 exports.modules = {
 
-/***/ 2302:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ AccountsList)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _CreditCards__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2184);
-/* harmony import */ var _PlaidButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1577);
-/* harmony import */ var _context_currentTab__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6464);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1143);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _context_themePreference__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(7609);
-
-
-
-
-
-
-
-function AccountsList() {
-    const { tab , setTab , subLink , setSublink  } = (0,react__WEBPACK_IMPORTED_MODULE_4__.useContext)(_context_currentTab__WEBPACK_IMPORTED_MODULE_3__/* .TabContext */ .q);
-    const { theme  } = (0,react__WEBPACK_IMPORTED_MODULE_4__.useContext)(_context_themePreference__WEBPACK_IMPORTED_MODULE_6__/* .ThemeContext */ .N);
-    const tabs = [
-        {
-            name: "Overview",
-            func: ()=>{
-                setTab("Overview");
-            },
-            icon: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.HomeIcon, {
-                className: "w-7 h-7"
-            })
-        },
-        {
-            name: "Accounts",
-            func: ()=>{
-                setTab("Accounts");
-            },
-            icon: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.UserIcon, {
-                className: "w-7 h-7"
-            })
-        },
-        {
-            name: "Settings",
-            func: ()=>{
-                setTab("Settings");
-            },
-            icon: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.CogIcon, {
-                className: " w-7 h-7"
-            }),
-            subLink: [
-                {
-                    name: "Profile",
-                    func: ()=>{
-                        setSublink("Profile");
-                    },
-                    icon: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.UserIcon, {
-                        className: "w-5 h-5 "
-                    })
-                },
-                {
-                    name: "Accounts",
-                    func: ()=>{
-                        setSublink("Accounts");
-                    },
-                    icon: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.CollectionIcon, {
-                        className: "w-5 h-5 "
-                    })
-                }, 
-            ]
-        }, 
-    ];
-    console.log(tab);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: "relative w-full h-full max-w-xs mt-8 mb-10 ml-auto lg:mt-0",
-        children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("nav", {
-                children: tabs.map((currentTab, index)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                        children: currentTab.name === tab ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                            className: `items-center justify-center block p-3 my-4 text-base font-medium text-white list-none lg:p-4 lg:items-start rounded-xl ${theme === "dark" ? "bg-neutral-900/50" : "bg-neutral-100"} gap-x-3`,
-                            children: [
-                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-                                    className: "flex items-center text-red-500 gap-x-3 ",
-                                    children: [
-                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-                                            className: "mx-auto lg:mx-0",
-                                            children: [
-                                                currentTab.icon,
-                                                " "
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                            className: "hidden lg:block",
-                                            children: currentTab.name
-                                        })
-                                    ]
-                                }),
-                                currentTab.subLink?.map((link, index)=>/*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                                        className: `items-center text-sm justify-start p-3 my-4 flex font-medium list-none lg:p-4 lg:items-start rounded-xl  cursor-pointer gap-x-3 
-                ${theme === "dark" && subLink === link.name ? "text-red-500 bg-neutral-800 cursor-auto" : "bg-neutral-700/20 "}
-                ${theme === "light" && subLink === link.name ? "text-red-500 bg-white cursor-auto" : " bg-gray-100  "}
-                `,
-                                        onClick: link.func,
-                                        children: [
-                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                className: "mx-auto lg:mx-0",
-                                                children: link.icon
-                                            }),
-                                            " ",
-                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                className: "hidden lg:block",
-                                                children: link.name
-                                            })
-                                        ]
-                                    }, index))
-                            ]
-                        }, index) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                            onClick: currentTab.func,
-                            className: `flex items-center justify-center p-3 my-4 text-base font-medium text-white list-none cursor-pointer lg:justify-start lg:p-4 rounded-xl ${theme === "dark" ? "hover:bg-neutral-900/50" : "hover:bg-neutral-100"} gap-x-3`,
-                            children: [
-                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                    className: `mx-auto ${theme === "dark" ? "text-neutral-400" : "text-neutral-900"} lg:mx-0`,
-                                    children: currentTab.icon
-                                }),
-                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                    className: `hidden lg:block ${theme === "dark" ? "text-white" : "text-neutral-900"}`,
-                                    children: currentTab.name
-                                })
-                            ]
-                        })
-                    }))
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                className: `absolute bottom-0 flex items-center justify-start w-full p-4 list-none cursor-pointer rounded-xl ${theme === "dark" ? "hover:text-red-500 text-neutral-200 hover:bg-neutral-900/50" : "hover:text-red-500 text-neutral-900 hover:bg-neutral-200"} gap-x-3`,
-                children: [
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.LogoutIcon, {
-                        className: "mx-auto w-7 h-7 lg:mx-0"
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                        className: "hidden lg:block",
-                        children: "Sign out"
-                    })
-                ]
-            })
-        ]
-    });
-};
-
-
-/***/ }),
-
 /***/ 2077:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -190,554 +36,55 @@ function Button({ text , customCSS , icon , disabled , setOpenTrackSpending  }) 
 
 /***/ }),
 
-/***/ 2184:
+/***/ 1312:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ CreditCards)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_creditcards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6305);
-/* harmony import */ var _PlaidButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1577);
-/* harmony import */ var _context_currentTab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6464);
-/* harmony import */ var _function_createLink__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7231);
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ Home),
+  "getServerSideProps": () => (/* binding */ getServerSideProps)
+});
 
+// EXTERNAL MODULE: external "react/jsx-runtime"
+var jsx_runtime_ = __webpack_require__(997);
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__(6689);
+// EXTERNAL MODULE: ./context/creditcards.js
+var creditcards = __webpack_require__(6305);
+// EXTERNAL MODULE: ./context/signedUser.js
+var context_signedUser = __webpack_require__(5208);
+// EXTERNAL MODULE: ./context/currentTab.js
+var currentTab = __webpack_require__(6464);
+;// CONCATENATED MODULE: external "react-plaid-link"
+const external_react_plaid_link_namespaceObject = require("react-plaid-link");
+;// CONCATENATED MODULE: external "@heroicons/react/solid"
+const solid_namespaceObject = require("@heroicons/react/solid");
+;// CONCATENATED MODULE: ./function/createLink.js
 
-
-
-
-function CreditCards({ selected  }) {
-    const { bankAccounts , setBankAccounts , setTransactions , setDisplayTransactions , setTransactionsId  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_creditcards__WEBPACK_IMPORTED_MODULE_2__/* .ItemsContext */ .c);
-    const { tab , setTab  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_currentTab__WEBPACK_IMPORTED_MODULE_4__/* .TabContext */ .q);
-    const viewTransactions = async (access_token, accountId)=>{
-        const endDate = new Date();
-        let endDateFormat = endDate.toISOString().substring(0, 10);
-        const startDate = new Date(endDate.setMonth(endDate.getMonth() - 6));
-        let startDateFormat = startDate.toISOString().substring(0, 10);
-        // TODO, fetch transactions of account that was clicked
-        const getTransactionsResponse = await fetch(`${"https://localhost:3001"}/api/transactions/${access_token}/${startDateFormat}/${endDateFormat}`, {
-            method: "GET"
-        });
-        const { transactions  } = await getTransactionsResponse.json();
-        // TODO, filter out selected card to display the right transactions
-        const selectedCardTransactions = transactions.filter((transaction)=>transaction.account_id == accountId);
-        // TODO, add total balance to prepare next section
-        bankAccounts.forEach((account, index)=>{
-            const accountIdPos = account.accounts?.findIndex((acc)=>acc.account_id === accountId);
-            if (accountIdPos == -1 || accountIdPos === undefined) {
-                return;
-            } else {
-                const addTransactions = [
-                    ...bankAccounts
-                ];
-                addTransactions[index].accounts[accountIdPos] = {
-                    ...addTransactions[index].accounts[accountIdPos],
-                    transactions: selectedCardTransactions
-                };
-                setBankAccounts(addTransactions);
-            }
-        });
-        // TODO, switch to next page
-        setTransactionsId(accountId);
-        setTab("Transactions");
-        setDisplayTransactions(true);
-    };
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: `absolute inset-0 h-full p-10 bg-neutral-900 ${tab} overflow-y-scroll removeScrollbar`,
-        children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "w-full mb-24",
-                children: [
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                        className: "text-4xl font-semibold text-white",
-                        children: "Accounts"
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                        className: "mt-2 text-neutral-400",
-                        children: "View all accounts you have linked with us."
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "w-full h-full",
-                children: [
-                    bankAccounts.map((bankAccount)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                            children: bankAccount.error && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "my-24",
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                        className: "mb-2 text-sm font-medium text-neutral-400",
-                                        children: "Accounts that need extra attention."
-                                    }),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                        className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl",
-                                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                            className: "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md",
-                                            children: [
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
-                                                    className: "mb-3 text-xl text-neutral-400",
-                                                    children: bankAccount.institution
-                                                }),
-                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                                    className: "mb-5 text-sm text-neutral-600",
-                                                    children: [
-                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                            className: "text-neutral-400",
-                                                            children: "This account requires extra attention."
-                                                        }),
-                                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                                            className: "text-xs",
-                                                            children: [
-                                                                "Error: ",
-                                                                bankAccount.error
-                                                            ]
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_PlaidButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-                                                    text: bankAccount.error == "ITEM_LOGIN_REQUIRED" && "Relogin",
-                                                    customCSS: "w-full",
-                                                    removeOldItem: bankAccount.id
-                                                })
-                                            ]
-                                        }, bankAccount.error)
-                                    })
-                                ]
-                            })
-                        })),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "my-24",
-                        children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                className: "mb-2 text-sm font-medium text-neutral-400",
-                                children: "Credit Cards"
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl",
-                                children: bankAccounts.map((bankAccount)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                        children: !bankAccount.error && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                            children: bankAccount.accounts.map((acc)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                                    children: acc.subtype == "credit card" && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                                        className: "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800",
-                                                        children: [
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                                                                className: "text-2xl font-medium text-white",
-                                                                children: acc.official_name
-                                                            }),
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                                                className: "mt-2",
-                                                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                                                    className: "flex flex-col text-xl text-neutral-400",
-                                                                    children: [
-                                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                            className: "text-sm text-gray-200",
-                                                                            children: "Total Balance"
-                                                                        }),
-                                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                            className: "font-medium text-red-400",
-                                                                            children: acc.balances?.current.toLocaleString("en-us", {
-                                                                                style: "currency",
-                                                                                currency: acc.balances.iso_currency_code
-                                                                            })
-                                                                        })
-                                                                    ]
-                                                                })
-                                                            }),
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                                                className: "w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75",
-                                                                onClick: ()=>viewTransactions(bankAccount.accessToken, acc.account_id),
-                                                                children: "View Account"
-                                                            })
-                                                        ]
-                                                    }, acc.account_id)
-                                                }))
-                                        })
-                                    }))
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "my-24",
-                        children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                className: "mb-2 text-sm font-medium text-neutral-400",
-                                children: "Checking Accounts"
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl",
-                                children: bankAccounts.map((bankAccount)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                        children: !bankAccount.error && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                            children: bankAccount.accounts.map((acc)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                                    children: acc.subtype == "checking" && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                                        className: "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800",
-                                                        children: [
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                                                                className: "text-2xl font-medium text-white",
-                                                                children: acc.official_name
-                                                            }),
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                                                className: "mt-2",
-                                                                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                                                    className: "flex flex-col text-xl text-neutral-400",
-                                                                    children: [
-                                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                            className: "text-sm text-gray-200",
-                                                                            children: "Total Balance"
-                                                                        }),
-                                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                            className: "font-medium text-red-400",
-                                                                            children: acc.balances?.current.toLocaleString("en-us", {
-                                                                                style: "currency",
-                                                                                currency: acc.balances.iso_currency_code
-                                                                            })
-                                                                        })
-                                                                    ]
-                                                                })
-                                                            }),
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                                                className: "w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75",
-                                                                onClick: ()=>viewTransactions(bankAccount.accessToken, acc.account_id),
-                                                                children: "View Account"
-                                                            })
-                                                        ]
-                                                    }, acc.account_id)
-                                                }))
-                                        })
-                                    }))
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_PlaidButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
-                        customCSS: "fixed bottom-5 right-5 h-16 rounded-xl w-16 text-neutral-900 hover:bg-red-600/50 hover:text-white py-4 bg-red-600 shadow-xl"
-                    })
-                ]
-            })
-        ]
+const CreateLinkToken = async ()=>{
+    // TODO, First, create a link token, and store to local storage for future use
+    const response = await fetch(`${"https://localhost:3001"}/api/create_link_token`, {
+        method: "POST"
     });
-};
-
-
-/***/ }),
-
-/***/ 9042:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1143);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_creditcards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6305);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _context_currentTab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6464);
-/* harmony import */ var _PlaidButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1577);
-/* harmony import */ var _context_signedUser__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5208);
-
-
-
-
-
-
-
-const Overview = ()=>{
-    const { bankAccounts , setBankAccounts  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_context_creditcards__WEBPACK_IMPORTED_MODULE_2__/* .ItemsContext */ .c);
-    const { signedUser  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_context_signedUser__WEBPACK_IMPORTED_MODULE_6__/* .UserContext */ .S);
-    const { tab  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_context_currentTab__WEBPACK_IMPORTED_MODULE_4__/* .TabContext */ .q);
-    const { 0: debtDueSoon , 1: setDebtDueSoon  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)();
-    const { 0: totalDebt , 1: setTotalDebt  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)();
-    const { 0: userLocale , 1: setUserLocale  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("en-us");
-    //TODO, use effect is used to determine users language preference
-    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        let isMounted = true;
-        // TODO, figure out the users language preference, used to format the currency display.
-        const navigator = navigator?.languages && navigator?.languages.length ? navigator?.languages[0] : navigator?.language;
-        if (isMounted) {
-            setUserLocale(navigator || "en-us");
+    // Error handling
+    if (!response.ok) {
+        console.log("vro, something is wrong");
+        return;
+    }
+    const data = await response.json();
+    if (data) {
+        if (data.error != null) {
+            console.log("vro something else is wrong", data.error);
+            return;
         }
-        console.log("infinitelooptest");
-        // TODO, cleanup function
-        return ()=>{
-            isMounted = false;
-        };
-    }, []);
-    // TODO, use effect is used to set a total debt. 
-    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        (()=>{
-            let total = 0;
-            bankAccounts.forEach((bankAccount)=>{
-                bankAccount.accounts?.map((account)=>{
-                    if (account.subtype != "credit card") {
-                        return;
-                    }
-                    total += account.balances.current;
-                });
-            });
-            setTotalDebt(total);
-        })();
-        console.log("infinitelooptest");
-    }, [
-        bankAccounts
-    ]);
-    // TODO, use effect is used to display a card that is being due soon. Preferebly those that have a statement balance on them.
-    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        (()=>{
-            const creditCardsLiability = [];
-            bankAccounts.forEach((bankAccount)=>{
-                // TODO, only display accounts that are credit cards
-                bankAccount.accounts?.map((account)=>{
-                    if (account.subtype != "credit card") {
-                        return;
-                    }
-                    // TODO, get how many days are left till the user has to pay.
-                    const today = new Date();
-                    const dueDate = new Date(account.accLiability.next_payment_due_date);
-                    if (account.accLiability.minimum_payment_amount === 0) {
-                        dueDate.setMonth(dueDate.getMonth() + 1);
-                    }
-                    const differenceInTime = dueDate.getTime() - today.getTime();
-                    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-                    if (differenceInDays < 0) {
-                        return;
-                    }
-                    console.log(account);
-                    // TODO, create an object displaying necessary information.
-                    const cardObj = {
-                        account: account,
-                        due: account.balances.current,
-                        statement: account.accLiability.last_statement_balance - account.accLiability.last_payment_amount,
-                        minimumDue: account.accLiability.minimum_payment_amount,
-                        daysTillDue: parseInt(differenceInDays),
-                        dueDate: account.accLiability.next_payment_due_date,
-                        currencyCode: account.balances.iso_currency_code
-                    };
-                    creditCardsLiability.push(cardObj);
-                    console.log(cardObj);
-                });
-            });
-            // TODO, sort credit cards by which card is due first.
-            creditCardsLiability.sort((a, b)=>parseInt(a.daysTillDue) - parseFloat(b.daysTillDue));
-            setDebtDueSoon(creditCardsLiability);
-            console.log("infinitelooptest");
-        })();
-    }, [
-        bankAccounts.length
-    ]);
-    // SPENDING BY MONTH, INTEGRATE SOON IDK
-    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        let accounts = [];
-        const trackSpending = async ()=>{
-            bankAccounts.forEach((bankAccount)=>{
-                bankAccount.accounts?.forEach((account)=>{
-                    accounts.push(account);
-                });
-            });
-        };
-        trackSpending();
-        console.log("infinitelooptest");
-    }, [
-        bankAccounts.length
-    ]);
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-        className: `absolute inset-0 h-full px-10 py-16 z-20 bg-neutral-900 overflow-y-scroll removeScrollbar ${tab === "Overview" ? "translate-x-0" : "translate-x-full"} transition`,
-        children: [
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "w-full mb-24",
-                children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-                        className: "text-2xl font-semibold text-white md:text-3xl xl:text-4xl",
-                        children: [
-                            "Hi, ",
-                            signedUser.firstName,
-                            ", welcome back!"
-                        ]
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                        className: "mt-2 text-neutral-400",
-                        children: "Let's give you a quick overview of your current week."
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "w-full h-full",
-                children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "grid grid-cols-6 gap-6 ",
-                        children: [
-                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "relative w-full col-span-6 p-6 shadow-xl lg:col-span-2 bg-zinc-800 rounded-xl",
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_1__.CashIcon, {
-                                        className: "mb-2 text-white w-14 h-14"
-                                    }),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                                        className: "text-3xl font-medium text-white",
-                                        children: totalDebt?.toLocaleString(userLocale, {
-                                            style: "currency",
-                                            currency: "USD"
-                                        })
-                                    }),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                        className: "mt-1 text-sm text-neutral-400",
-                                        children: "Total credit card debt"
-                                    })
-                                ]
-                            }),
-                            debtDueSoon?.length != 0 && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "relative w-full col-span-6 p-6 shadow-xl lg:col-span-4 bg-zinc-800 rounded-xl",
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_1__.CreditCardIcon, {
-                                        className: "mb-2 text-white w-14 h-14"
-                                    }),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                        className: "text-xl font-medium text-white",
-                                        children: debtDueSoon?.length > 1 ? "Debts are due soon" : "A debt is due soon."
-                                    }),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                        className: "grid w-full grid-cols-1 gap-6 p-4 my-2 sm:grid-cols-2 bg-zinc-900 rounded-xl",
-                                        children: debtDueSoon?.map((debt, index)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                                children: index != 3 && /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                                    children: debt?.due > 0 && debt.daysTillDue < 30 && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                                        className: `${index === 0 ? "sm:col-span-2 bg-neutral-500 p-4 rounded-xl" : "sm:col-span-1 bg-neutral-600/50 rounded-xl p-4"}`,
-                                                        children: [
-                                                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                                                className: "flex flex-wrap items-center justify-start gap-2 text-xs",
-                                                                children: [
-                                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                        className: "font-medium text-neutral-300",
-                                                                        children: debt.account.name
-                                                                    }),
-                                                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-                                                                        className: "text-neutral-300",
-                                                                        children: [
-                                                                            "*",
-                                                                            debt.account.mask
-                                                                        ]
-                                                                    })
-                                                                ]
-                                                            }),
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                                className: "mt-4 text-sm text-neutral-300/75",
-                                                                children: debt.minimumDue != 0 ? "Statement balance" : "Total balance"
-                                                            }),
-                                                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                                className: "text-2xl font-medium text-white",
-                                                                children: debt.minimumDue != 0 ? debt.statement?.toLocaleString(userLocale, {
-                                                                    style: "currency",
-                                                                    currency: debt.currencyCode
-                                                                }) : debt.due.toLocaleString(userLocale, {
-                                                                    style: "currency",
-                                                                    currency: debt.currencyCode
-                                                                })
-                                                            }),
-                                                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                                                className: "mt-4 text-sm text-neutral-300/75",
-                                                                children: [
-                                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                        children: "You have "
-                                                                    }),
-                                                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
-                                                                        className: "font-medium text-white",
-                                                                        children: [
-                                                                            debt.daysTillDue,
-                                                                            " "
-                                                                        ]
-                                                                    }),
-                                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                        className: "font-medium text-white",
-                                                                        children: debt.daysTillDue === 1 ? "day " : "days "
-                                                                    }),
-                                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                                                        children: "left to pay this off."
-                                                                    })
-                                                                ]
-                                                            })
-                                                        ]
-                                                    })
-                                                })
-                                            }))
-                                    })
-                                ]
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "pb-24",
-                        children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                className: "mt-24 mb-2 text-sm font-medium text-neutral-400",
-                                children: "Accounts needed extra action."
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl ",
-                                children: bankAccounts.map((bankAccount)=>/*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                                        children: bankAccount.error && /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                            className: "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md",
-                                            children: [
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
-                                                    className: "mb-3 text-xl text-neutral-400",
-                                                    children: bankAccount.institution
-                                                }),
-                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                                    className: "mb-5 text-sm text-neutral-600",
-                                                    children: [
-                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                            className: "text-neutral-400",
-                                                            children: "This account requires extra attention."
-                                                        }),
-                                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
-                                                            className: "text-xs",
-                                                            children: [
-                                                                "Error: ",
-                                                                bankAccount.error
-                                                            ]
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_PlaidButton__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
-                                                    text: bankAccount.error == "ITEM_LOGIN_REQUIRED" && "Relogin",
-                                                    customCSS: "w-full",
-                                                    removeOldItem: bankAccount.id
-                                                })
-                                            ]
-                                        }, bankAccount.error)
-                                    }))
-                            })
-                        ]
-                    })
-                ]
-            })
-        ]
-    });
+        localStorage.setItem("link_token", data.link_token);
+    }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview);
 
-
-/***/ }),
-
-/***/ 1577:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_plaid_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5628);
-/* harmony import */ var react_plaid_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_plaid_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _context_creditcards__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6305);
-/* harmony import */ var _context_signedUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5208);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1143);
-/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _function_createLink__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(7231);
+;// CONCATENATED MODULE: ./components/PlaidButton.js
 
 
 
@@ -746,13 +93,13 @@ const Overview = ()=>{
 
 
 const PlaidButton = ({ text , customCSS , removeOldItem  })=>{
-    const { signedUser  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_signedUser__WEBPACK_IMPORTED_MODULE_4__/* .UserContext */ .S);
-    const { 0: linkToken , 1: setLinkToken  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
-    const { item , setItem , bankAccounts , setBankAccounts  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_creditcards__WEBPACK_IMPORTED_MODULE_3__/* .ItemsContext */ .c);
+    const { signedUser  } = (0,external_react_.useContext)(context_signedUser/* UserContext */.S);
+    const { 0: linkToken , 1: setLinkToken  } = (0,external_react_.useState)(null);
+    const { item , setItem , bankAccounts , setBankAccounts  } = (0,external_react_.useContext)(creditcards/* ItemsContext */.c);
     const domain = "https://localhost:3001";
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+    (0,external_react_.useEffect)(()=>{
         let mounted = true;
-        (0,_function_createLink__WEBPACK_IMPORTED_MODULE_6__/* .CreateLinkToken */ .j)();
+        CreateLinkToken();
         if (mounted) {
             setLinkToken(window.localStorage.getItem("link_token"));
         }
@@ -783,7 +130,7 @@ const PlaidButton = ({ text , customCSS , removeOldItem  })=>{
         }
         open();
     };
-    const { open , ready  } = (0,react_plaid_link__WEBPACK_IMPORTED_MODULE_2__.usePlaidLink)({
+    const { open , ready  } = (0,external_react_plaid_link_namespaceObject.usePlaidLink)({
         token: linkToken,
         onSuccess: (public_token, metadata)=>{
             // TODO, logic for successfully adding a bank account
@@ -839,7 +186,7 @@ const PlaidButton = ({ text , customCSS , removeOldItem  })=>{
             console.log("yo bro pleaseee fix this issue!!!");
         }
     });
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", {
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
         onClick: ()=>openPlaid(),
         className: `px-4 py-3 font-medium text-white transition bg-red-500 rounded-md hover:bg-red-500/75 disabled:bg-gray-500 disabled:text-white flex items-center justify-center gap-x-3
       ${customCSS}
@@ -847,195 +194,423 @@ const PlaidButton = ({ text , customCSS , removeOldItem  })=>{
         disabled: !ready,
         children: [
             text,
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_5__.PlusIcon, {
+            /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.PlusIcon, {
                 className: "w-5 h-5"
             })
         ]
     });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PlaidButton);
+/* harmony default export */ const components_PlaidButton = (PlaidButton);
 
-
-/***/ }),
-
-/***/ 1394:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ components_Settings)
-});
-
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(997);
-// EXTERNAL MODULE: ./context/currentTab.js
-var currentTab = __webpack_require__(6464);
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./components/Button.js
-var Button = __webpack_require__(2077);
-;// CONCATENATED MODULE: ./components/ProfileSettings.js
+;// CONCATENATED MODULE: ./components/CreditCards.js
 
 
 
-const inputs = [
-    {
-        id: 1,
-        type: "text",
-        label: "First Name",
-        name: "firstName",
-        placeholder: "First Name"
-    },
-    {
-        id: 2,
-        type: "text",
-        label: "Last Name",
-        name: "lastName",
-        placeholder: "Last Name"
-    },
-    {
-        id: 3,
-        type: "email",
-        label: "Email",
-        name: "email",
-        placeholder: "Email"
-    }, 
-];
-const ProfileSettings = ()=>{
-    const { 0: values , 1: setValues  } = (0,external_react_.useState)({
-        firstName: "",
-        lastName: "",
-        email: ""
-    });
-    const onChange = (e)=>{
-        const { name , value  } = e.target;
-        setValues((prevState)=>({
-                ...prevState,
-                [name]: value
-            }));
-    };
-    const isEmpty = ()=>{
-        if (values.firstName === "" && values.lastName === "" && values.email === "") {
-            return true;
-        } else {
-            return false;
-        }
+
+
+
+function CreditCards({ selected  }) {
+    const { bankAccounts , setBankAccounts , setTransactions , setDisplayTransactions , setTransactionsId  } = (0,external_react_.useContext)(creditcards/* ItemsContext */.c);
+    const { tab , setTab  } = (0,external_react_.useContext)(currentTab/* TabContext */.q);
+    const viewTransactions = async (access_token, accountId)=>{
+        const endDate = new Date();
+        let endDateFormat = endDate.toISOString().substring(0, 10);
+        const startDate = new Date(endDate.setMonth(endDate.getMonth() - 6));
+        let startDateFormat = startDate.toISOString().substring(0, 10);
+        // TODO, fetch transactions of account that was clicked
+        const getTransactionsResponse = await fetch(`${"https://localhost:3001"}/api/transactions/${access_token}/${startDateFormat}/${endDateFormat}`, {
+            method: "GET"
+        });
+        const { transactions  } = await getTransactionsResponse.json();
+        // TODO, filter out selected card to display the right transactions
+        const selectedCardTransactions = transactions.filter((transaction)=>transaction.account_id == accountId);
+        // TODO, add total balance to prepare next section
+        bankAccounts.forEach((account, index)=>{
+            const accountIdPos = account.accounts?.findIndex((acc)=>acc.account_id === accountId);
+            if (accountIdPos == -1 || accountIdPos === undefined) {
+                return;
+            } else {
+                const addTransactions = [
+                    ...bankAccounts
+                ];
+                addTransactions[index].accounts[accountIdPos] = {
+                    ...addTransactions[index].accounts[accountIdPos],
+                    transactions: selectedCardTransactions
+                };
+                setBankAccounts(addTransactions);
+            }
+        });
+        // TODO, switch to next page
+        setTransactionsId(accountId);
+        setTab("Transactions");
+        setDisplayTransactions(true);
     };
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "w-full h-auto pb-24",
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
-                className: "text-2xl font-medium text-white",
-                children: "Personal Information"
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("form", {
-                className: "flex flex-col pb-16",
-                children: [
-                    inputs.map(({ id , label , ...inputAttrs })=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                            className: "flex flex-col items-start justify-center my-6",
-                            children: [
-                                /*#__PURE__*/ jsx_runtime_.jsx("label", {
-                                    className: "mb-2 text-sm text-neutral-400",
-                                    children: label
-                                }),
-                                /*#__PURE__*/ jsx_runtime_.jsx("input", {
-                                    ...inputAttrs,
-                                    className: "w-full p-4 text-red-200 border-none outline-none focus:outline-none bg-neutral-800 rounded-xl outline-0",
-                                    onChange: onChange
-                                })
-                            ]
-                        }, id)),
-                    /*#__PURE__*/ jsx_runtime_.jsx(Button/* default */.Z, {
-                        text: "Save changes",
-                        customCSS: "w-40 ml-auto mt-2",
-                        disabled: isEmpty()
-                    })
-                ]
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
-                className: "text-2xl font-medium text-white",
-                children: "Delete my account"
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                className: "max-w-xl mt-2 text-sm sm:text-base text-neutral-400",
-                children: "All of your data will be deleted, personal information as well as bank information will be wiped. If you disable your account, you information will still be stored but you won't be allowed back into our site untill you have logged in and reconfirmed your password."
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex mt-12 gap-x-5",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx(Button/* default */.Z, {
-                        text: "Disable my account",
-                        customCSS: "w-52"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                        className: "text-sm text-red-400",
-                        children: "Delete my account"
-                    })
-                ]
-            })
-        ]
-    });
-};
-/* harmony default export */ const components_ProfileSettings = (ProfileSettings);
-
-;// CONCATENATED MODULE: ./components/Settings.js
-
-
-
-
-const Settings = ()=>{
-    const { tab , subLink  } = (0,external_react_.useContext)(currentTab/* TabContext */.q);
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: `absolute top-0 overflow-y-scroll bottom-0 left-0 right-0 h-full p-10 bg-neutral-900 ${tab === "Settings" ? "translate-x-0" : "translate-x-full"} transition duration-300 ease-in-out removeScrollbar`,
+        className: `absolute inset-0 h-full p-10 bg-neutral-900 ${tab} overflow-y-scroll removeScrollbar`,
         children: [
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "w-full",
+                className: "w-full mb-24",
                 children: [
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h1", {
+                    /*#__PURE__*/ jsx_runtime_.jsx("h1", {
                         className: "text-4xl font-semibold text-white",
-                        children: [
-                            subLink,
-                            " settings."
-                        ]
+                        children: "Accounts"
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx("p", {
                         className: "mt-2 text-neutral-400",
-                        children: "View all your account information. "
+                        children: "View all accounts you have linked with us."
                     })
                 ]
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "w-full h-full py-24",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(components_ProfileSettings, {})
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "w-full h-full",
+                children: [
+                    bankAccounts.map((bankAccount)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                            children: bankAccount.error && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "my-24",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                        className: "mb-2 text-sm font-medium text-neutral-400",
+                                        children: "Accounts that need extra attention."
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                        className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl",
+                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                            className: "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md",
+                                            children: [
+                                                /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                                    className: "mb-3 text-xl text-neutral-400",
+                                                    children: bankAccount.institution
+                                                }),
+                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                    className: "mb-5 text-sm text-neutral-600",
+                                                    children: [
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                            className: "text-neutral-400",
+                                                            children: "This account requires extra attention."
+                                                        }),
+                                                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                            className: "text-xs",
+                                                            children: [
+                                                                "Error: ",
+                                                                bankAccount.error
+                                                            ]
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ jsx_runtime_.jsx(components_PlaidButton, {
+                                                    text: bankAccount.error == "ITEM_LOGIN_REQUIRED" && "Relogin",
+                                                    customCSS: "w-full",
+                                                    removeOldItem: bankAccount.id
+                                                })
+                                            ]
+                                        }, bankAccount.error)
+                                    })
+                                ]
+                            })
+                        })),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "my-24",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                className: "mb-2 text-sm font-medium text-neutral-400",
+                                children: "Credit Cards"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl",
+                                children: bankAccounts.map((bankAccount)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                        children: !bankAccount.error && /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                            children: bankAccount.accounts.map((acc)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                                    children: acc.subtype == "credit card" && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                        className: "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800",
+                                                        children: [
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                                                                className: "text-2xl font-medium text-white",
+                                                                children: acc.official_name
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                                                className: "mt-2",
+                                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                                    className: "flex flex-col text-xl text-neutral-400",
+                                                                    children: [
+                                                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                            className: "text-sm text-gray-200",
+                                                                            children: "Total Balance"
+                                                                        }),
+                                                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                            className: "font-medium text-red-400",
+                                                                            children: acc.balances?.current.toLocaleString("en-us", {
+                                                                                style: "currency",
+                                                                                currency: acc.balances.iso_currency_code
+                                                                            })
+                                                                        })
+                                                                    ]
+                                                                })
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                                                className: "w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75",
+                                                                onClick: ()=>viewTransactions(bankAccount.accessToken, acc.account_id),
+                                                                children: "View Account"
+                                                            })
+                                                        ]
+                                                    }, acc.account_id)
+                                                }))
+                                        })
+                                    }))
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "my-24",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                className: "mb-2 text-sm font-medium text-neutral-400",
+                                children: "Checking Accounts"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl",
+                                children: bankAccounts.map((bankAccount)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                        children: !bankAccount.error && /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                            children: bankAccount.accounts.map((acc)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                                    children: acc.subtype == "checking" && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                        className: "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800",
+                                                        children: [
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                                                                className: "text-2xl font-medium text-white",
+                                                                children: acc.official_name
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                                                className: "mt-2",
+                                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                                    className: "flex flex-col text-xl text-neutral-400",
+                                                                    children: [
+                                                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                            className: "text-sm text-gray-200",
+                                                                            children: "Total Balance"
+                                                                        }),
+                                                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                            className: "font-medium text-red-400",
+                                                                            children: acc.balances?.current.toLocaleString("en-us", {
+                                                                                style: "currency",
+                                                                                currency: acc.balances.iso_currency_code
+                                                                            })
+                                                                        })
+                                                                    ]
+                                                                })
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                                                                className: "w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75",
+                                                                onClick: ()=>viewTransactions(bankAccount.accessToken, acc.account_id),
+                                                                children: "View Account"
+                                                            })
+                                                        ]
+                                                    }, acc.account_id)
+                                                }))
+                                        })
+                                    }))
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx(components_PlaidButton, {
+                        customCSS: "fixed bottom-5 right-5 h-16 rounded-xl w-16 text-neutral-900 hover:bg-red-600/50 hover:text-white py-4 bg-red-600 shadow-xl"
+                    })
+                ]
             })
         ]
     });
 };
-/* harmony default export */ const components_Settings = (Settings);
+
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: ./context/themePreference.js
+var themePreference = __webpack_require__(7609);
+;// CONCATENATED MODULE: ./components/UserProfile.js
 
 
-/***/ }),
-
-/***/ 4954:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ Transactions)
-});
 
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(997);
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./context/creditcards.js
-var creditcards = __webpack_require__(6305);
-// EXTERNAL MODULE: external "@heroicons/react/solid"
-var solid_ = __webpack_require__(1143);
-// EXTERNAL MODULE: ./context/currentTab.js
-var currentTab = __webpack_require__(6464);
+const settingsLinks = [
+    {
+        name: "Settings",
+        link: "#"
+    },
+    {
+        name: "Sign Out",
+        link: "#"
+    }
+];
+function UserProfile() {
+    const { signedUser  } = (0,external_react_.useContext)(context_signedUser/* UserContext */.S);
+    const { theme  } = (0,external_react_.useContext)(themePreference/* ThemeContext */.N);
+    const { 0: expand , 1: setExpand  } = (0,external_react_.useState)(false);
+    const expandRef = (0,external_react_.useRef)();
+    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
+        className: `hidden w-full max-w-xs mt-10 ml-auto ${theme === "dark" ? "bg-neutral-700/20" : "bg-neutral-200"} rounded-xl lg:block`,
+        children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
+            className: `
+       flex relative items-center justify-center flex-col  p-4 transition rounded-lg h-26`,
+            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "flex flex-col items-center justify-center p-4 rounded-xl",
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "flex flex-col xl:flex-row gap-x-2",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                className: `hidden text-xl font-medium ${theme === "dark" ? "text-white" : "text-neutral-900"} lg:block sm:text-sm md:text-md lg:text-lg`,
+                                children: signedUser?.firstName
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                className: `hidden text-xl font-medium ${theme === "dark" ? "text-white" : "text-neutral-900"} lg:block sm:text-sm md:text-md lg:text-lg`,
+                                children: signedUser?.lastName
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                        className: `hidden text-xs ${theme === "dark" ? "text-neutral-300/75" : "text-neutral-600/75"} lg:block md:text-sm lg:text-base`,
+                        children: signedUser?.email
+                    })
+                ]
+            })
+        })
+    });
+};
+
+;// CONCATENATED MODULE: ./components/AccountsList.js
+
+
+
+
+
+
+
+function AccountsList() {
+    const { tab , setTab , subLink , setSublink  } = (0,external_react_.useContext)(currentTab/* TabContext */.q);
+    const { theme  } = (0,external_react_.useContext)(themePreference/* ThemeContext */.N);
+    const tabs = [
+        {
+            name: "Overview",
+            func: ()=>{
+                setTab("Overview");
+            },
+            icon: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.HomeIcon, {
+                className: "w-7 h-7"
+            })
+        },
+        {
+            name: "Accounts",
+            func: ()=>{
+                setTab("Accounts");
+            },
+            icon: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.UserIcon, {
+                className: "w-7 h-7"
+            })
+        },
+        {
+            name: "Settings",
+            func: ()=>{
+                setTab("Settings");
+            },
+            icon: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.CogIcon, {
+                className: " w-7 h-7"
+            }),
+            subLink: [
+                {
+                    name: "Profile",
+                    func: ()=>{
+                        setSublink("Profile");
+                    },
+                    icon: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.UserIcon, {
+                        className: "w-5 h-5 "
+                    })
+                },
+                {
+                    name: "Accounts",
+                    func: ()=>{
+                        setSublink("Accounts");
+                    },
+                    icon: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.CollectionIcon, {
+                        className: "w-5 h-5 "
+                    })
+                }, 
+            ]
+        }, 
+    ];
+    console.log(tab);
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        className: "relative w-full h-full max-w-xs mt-8 mb-10 ml-auto lg:mt-0",
+        children: [
+            /*#__PURE__*/ jsx_runtime_.jsx("nav", {
+                children: tabs.map((currentTab, index)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                        children: currentTab.name === tab ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                            className: `items-center justify-center block p-3 my-4 text-base font-medium text-white list-none lg:p-4 lg:items-start rounded-xl ${theme === "dark" ? "bg-neutral-900/50" : "bg-neutral-100"} gap-x-3`,
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                    className: "flex items-center text-red-500 gap-x-3 ",
+                                    children: [
+                                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                            className: "mx-auto lg:mx-0",
+                                            children: [
+                                                currentTab.icon,
+                                                " "
+                                            ]
+                                        }),
+                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                            className: "hidden lg:block",
+                                            children: currentTab.name
+                                        })
+                                    ]
+                                }),
+                                currentTab.subLink?.map((link, index)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                                        className: `items-center text-sm justify-start p-3 my-4 flex font-medium list-none lg:p-4 lg:items-start rounded-xl  cursor-pointer gap-x-3 
+                ${theme === "dark" && subLink === link.name ? "text-red-500 bg-neutral-800 cursor-auto" : "bg-neutral-700/20 "}
+                ${theme === "light" && subLink === link.name ? "text-red-500 bg-white cursor-auto" : " bg-gray-100  "}
+                `,
+                                        onClick: link.func,
+                                        children: [
+                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                className: "mx-auto lg:mx-0",
+                                                children: link.icon
+                                            }),
+                                            " ",
+                                            /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                className: "hidden lg:block",
+                                                children: link.name
+                                            })
+                                        ]
+                                    }, index))
+                            ]
+                        }, index) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                            onClick: currentTab.func,
+                            className: `flex items-center justify-center p-3 my-4 text-base font-medium text-white list-none cursor-pointer lg:justify-start lg:p-4 rounded-xl ${theme === "dark" ? "hover:bg-neutral-900/50" : "hover:bg-neutral-100"} gap-x-3`,
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                    className: `mx-auto ${theme === "dark" ? "text-neutral-400" : "text-neutral-900"} lg:mx-0`,
+                                    children: currentTab.icon
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                    className: `hidden lg:block ${theme === "dark" ? "text-white" : "text-neutral-900"}`,
+                                    children: currentTab.name
+                                })
+                            ]
+                        })
+                    }))
+            }),
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                className: `absolute bottom-0 flex items-center justify-start w-full p-4 list-none cursor-pointer rounded-xl ${theme === "dark" ? "hover:text-red-500 text-neutral-200 hover:bg-neutral-900/50" : "hover:text-red-500 text-neutral-900 hover:bg-neutral-200"} gap-x-3`,
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.LogoutIcon, {
+                        className: "mx-auto w-7 h-7 lg:mx-0"
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                        className: "hidden lg:block",
+                        children: "Sign out"
+                    })
+                ]
+            })
+        ]
+    });
+};
+
 // EXTERNAL MODULE: ./components/Button.js
 var Button = __webpack_require__(2077);
 ;// CONCATENATED MODULE: ./components/TimeFilter.js
@@ -1082,7 +657,7 @@ const TimeFilter = ({ setTimeframe , timeframe , display  })=>{
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx("span", {
                         className: `${displayFilters ? "rotate-0" : "rotate-180"} transition`,
-                        children: /*#__PURE__*/ jsx_runtime_.jsx(solid_.ChevronLeftIcon, {
+                        children: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.ChevronLeftIcon, {
                             className: "w-5 h-5"
                         })
                     })
@@ -1318,7 +893,7 @@ const Sortby = ({ setSortBy , timeframe , display  })=>{
                 className: "flex w-full gap-3 px-4 py-2 text-sm transition cursor-pointer rounded-xl",
                 children: [
                     sortValue,
-                    /*#__PURE__*/ jsx_runtime_.jsx(solid_.ChevronDownIcon, {
+                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.ChevronDownIcon, {
                         className: "w-5 h-5"
                     })
                 ]
@@ -2046,7 +1621,7 @@ function Transactions() {
                                         children: [
                                             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                                 onClick: ()=>setTab("View Accounts"),
-                                                children: /*#__PURE__*/ jsx_runtime_.jsx(solid_.ArrowSmLeftIcon, {
+                                                children: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.ArrowSmLeftIcon, {
                                                     className: "w-12 h-12 text-red-500 transition cursor-pointer hover:text-red-500/75"
                                                 })
                                             }),
@@ -2180,7 +1755,7 @@ function Transactions() {
                                 /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                     className: "absolute top-0 right-0 mt-6 mr-6 text-xl xl:hidden",
                                     onClick: ()=>setOpenTrackSpending(!openTrackSpending),
-                                    children: /*#__PURE__*/ jsx_runtime_.jsx(solid_.XIcon, {
+                                    children: /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.XIcon, {
                                         className: "w-8 h-8 text-red-500 transition cursor-pointer hover:text-red-500/50"
                                     })
                                 }),
@@ -2207,181 +1782,27 @@ function Transactions() {
     });
 };
 
-
-/***/ }),
-
-/***/ 8623:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ UserProfile)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_signedUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5208);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1664);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _context_themePreference__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7609);
-
-
-
-
-
-const settingsLinks = [
-    {
-        name: "Settings",
-        link: "#"
-    },
-    {
-        name: "Sign Out",
-        link: "#"
-    }
-];
-function UserProfile() {
-    const { signedUser  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_signedUser__WEBPACK_IMPORTED_MODULE_2__/* .UserContext */ .S);
-    const { theme  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_themePreference__WEBPACK_IMPORTED_MODULE_4__/* .ThemeContext */ .N);
-    const { 0: expand , 1: setExpand  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const expandRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)();
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        className: `hidden w-full max-w-xs mt-10 ml-auto ${theme === "dark" ? "bg-neutral-700/20" : "bg-neutral-200"} rounded-xl lg:block`,
-        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-            className: `
-       flex relative items-center justify-center flex-col  p-4 transition rounded-lg h-26`,
-            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "flex flex-col items-center justify-center p-4 rounded-xl",
-                children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "flex flex-col xl:flex-row gap-x-2",
-                        children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
-                                className: `hidden text-xl font-medium ${theme === "dark" ? "text-white" : "text-neutral-900"} lg:block sm:text-sm md:text-md lg:text-lg`,
-                                children: signedUser?.firstName
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h3", {
-                                className: `hidden text-xl font-medium ${theme === "dark" ? "text-white" : "text-neutral-900"} lg:block sm:text-sm md:text-md lg:text-lg`,
-                                children: signedUser?.lastName
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                        className: `hidden text-xs ${theme === "dark" ? "text-neutral-300/75" : "text-neutral-600/75"} lg:block md:text-sm lg:text-base`,
-                        children: signedUser?.email
-                    })
-                ]
-            })
-        })
+;// CONCATENATED MODULE: external "jsonwebtoken"
+const external_jsonwebtoken_namespaceObject = require("jsonwebtoken");
+;// CONCATENATED MODULE: ./function/getUserItems.js
+// const https = require('https')
+const getUserItems = async (userId)=>{
+    const getItemsResponse = await fetch(`${"https://localhost:3001"}/account/get-items/${userId}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
     });
-};
-
-
-/***/ }),
-
-/***/ 7231:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "j": () => (/* binding */ CreateLinkToken)
-/* harmony export */ });
-/* harmony import */ var react_plaid_link__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5628);
-/* harmony import */ var react_plaid_link__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_plaid_link__WEBPACK_IMPORTED_MODULE_0__);
-
-const CreateLinkToken = async ()=>{
-    // TODO, First, create a link token, and store to local storage for future use
-    const response = await fetch(`${"https://localhost:3001"}/api/create_link_token`, {
-        method: "POST"
-    });
-    // Error handling
-    if (!response.ok) {
-        console.log("vro, something is wrong");
-        return;
-    }
-    const data = await response.json();
-    if (data) {
-        if (data.error != null) {
-            console.log("vro something else is wrong", data.error);
-            return;
-        }
-        localStorage.setItem("link_token", data.link_token);
+    const { code , message , accounts  } = await getItemsResponse.json();
+    switch(code){
+        case 404:
+            return "idk bro some fat ass error going on rn";
+        case 200:
+            return accounts;
     }
 };
 
-
-/***/ }),
-
-/***/ 1915:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "G": () => (/* binding */ getAccountLiabilities)
-/* harmony export */ });
-const https = __webpack_require__(5687);
-const getAccountLiabilities = async (accounts)=>{
-    const accountLiabilities = await Promise.all(accounts.map(async (account)=>{
-        const getLiabilities = await fetch(`${"https://localhost:3001"}/api/liabilities/${account.access_token}`, {
-            method: "GET"
-        });
-        const { error , liabilities  } = await getLiabilities.json();
-        if (error) {
-            return error;
-        } else {
-            return liabilities;
-        }
-    }));
-    return accountLiabilities;
-};
-
-
-/***/ }),
-
-/***/ 8940:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* unused harmony export getAccountTransactions */
-const https = __webpack_require__(5687);
-const getAccountTransactions = async (accounts)=>{
-    const accountTransactions = await Promise.all(accounts.map(async (account)=>{
-        console.log(account);
-        // TODO, figure out how many months is it from the current month to January. 
-        let today = new Date().getMonth() + 1;
-        let monthsTillJan = 0;
-        while(today > 1){
-            monthsTillJan += 1;
-            today--;
-        }
-        // Get todays date
-        const endDate = new Date();
-        let endDateFormat = endDate.toISOString().substring(0, 10);
-        // Subtract new date with monthsTillJan variable YTD transactions
-        const startDate = new Date(endDate.setMonth(endDate.getMonth() - monthsTillJan));
-        let startDateFormat = startDate.toISOString().substring(0, 10);
-        // TODO, fetch transactions of account that was clicked
-        const getTransactionsResponse = await fetch(`${process.env.DOMAIN}/api/transactions/${account.access_token}/${startDateFormat}/${endDateFormat}`, {
-            method: "GET",
-            agent: new https.Agent({
-                rejectUnauthorized: false
-            })
-        });
-        const { transactions  } = await getTransactionsResponse.json();
-        try {
-            return transactions;
-        } catch (e) {
-            return e;
-        }
-    }));
-    return accountTransactions;
-};
-
-
-/***/ }),
-
-/***/ 6637:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "T": () => (/* binding */ getItemInfo)
-/* harmony export */ });
+;// CONCATENATED MODULE: ./function/getItemInfo.js
 const https = __webpack_require__(5687);
 const getItemInfo = async (userAccounts)=>{
     const accountInfo = await Promise.all(userAccounts.map(async (account)=>{
@@ -2409,40 +1830,479 @@ const getItemInfo = async (userAccounts)=>{
     return accountInfo;
 };
 
-
-/***/ }),
-
-/***/ 4547:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "R": () => (/* binding */ getUserItems)
-/* harmony export */ });
-// const https = require('https')
-const getUserItems = async (userId)=>{
-    const getItemsResponse = await fetch(`${"https://localhost:3001"}/account/get-items/${userId}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+;// CONCATENATED MODULE: ./function/getAccountLiabilities.js
+const getAccountLiabilities_https = __webpack_require__(5687);
+const getAccountLiabilities = async (accounts)=>{
+    const accountLiabilities = await Promise.all(accounts.map(async (account)=>{
+        const getLiabilities = await fetch(`${"https://localhost:3001"}/api/liabilities/${account.access_token}`, {
+            method: "GET"
+        });
+        const { error , liabilities  } = await getLiabilities.json();
+        if (error) {
+            return error;
+        } else {
+            return liabilities;
         }
-    });
-    const { code , message , accounts  } = await getItemsResponse.json();
-    switch(code){
-        case 404:
-            return "idk bro some fat ass error going on rn";
-        case 200:
-            return accounts;
-    }
+    }));
+    return accountLiabilities;
 };
 
+;// CONCATENATED MODULE: ./components/ProfileSettings.js
 
-/***/ }),
 
-/***/ 435:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-/* unused harmony export verifyToken */
-const https = __webpack_require__(5687);
+const inputs = [
+    {
+        id: 1,
+        type: "text",
+        label: "First Name",
+        name: "firstName",
+        placeholder: "First Name"
+    },
+    {
+        id: 2,
+        type: "text",
+        label: "Last Name",
+        name: "lastName",
+        placeholder: "Last Name"
+    },
+    {
+        id: 3,
+        type: "email",
+        label: "Email",
+        name: "email",
+        placeholder: "Email"
+    }, 
+];
+const ProfileSettings = ()=>{
+    const { 0: values , 1: setValues  } = (0,external_react_.useState)({
+        firstName: "",
+        lastName: "",
+        email: ""
+    });
+    const onChange = (e)=>{
+        const { name , value  } = e.target;
+        setValues((prevState)=>({
+                ...prevState,
+                [name]: value
+            }));
+    };
+    const isEmpty = ()=>{
+        if (values.firstName === "" && values.lastName === "" && values.email === "") {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        className: "w-full h-auto pb-24",
+        children: [
+            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                className: "text-2xl font-medium text-white",
+                children: "Personal Information"
+            }),
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("form", {
+                className: "flex flex-col pb-16",
+                children: [
+                    inputs.map(({ id , label , ...inputAttrs })=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                            className: "flex flex-col items-start justify-center my-6",
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx("label", {
+                                    className: "mb-2 text-sm text-neutral-400",
+                                    children: label
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("input", {
+                                    ...inputAttrs,
+                                    className: "w-full p-4 text-red-200 border-none outline-none focus:outline-none bg-neutral-800 rounded-xl outline-0",
+                                    onChange: onChange
+                                })
+                            ]
+                        }, id)),
+                    /*#__PURE__*/ jsx_runtime_.jsx(Button/* default */.Z, {
+                        text: "Save changes",
+                        customCSS: "w-40 ml-auto mt-2",
+                        disabled: isEmpty()
+                    })
+                ]
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                className: "text-2xl font-medium text-white",
+                children: "Delete my account"
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                className: "max-w-xl mt-2 text-sm sm:text-base text-neutral-400",
+                children: "All of your data will be deleted, personal information as well as bank information will be wiped. If you disable your account, you information will still be stored but you won't be allowed back into our site untill you have logged in and reconfirmed your password."
+            }),
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "flex mt-12 gap-x-5",
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx(Button/* default */.Z, {
+                        text: "Disable my account",
+                        customCSS: "w-52"
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                        className: "text-sm text-red-400",
+                        children: "Delete my account"
+                    })
+                ]
+            })
+        ]
+    });
+};
+/* harmony default export */ const components_ProfileSettings = (ProfileSettings);
+
+;// CONCATENATED MODULE: ./components/Settings.js
+
+
+
+
+const Settings = ()=>{
+    const { tab , subLink  } = (0,external_react_.useContext)(currentTab/* TabContext */.q);
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        className: `absolute top-0 overflow-y-scroll bottom-0 left-0 right-0 h-full p-10 bg-neutral-900 ${tab === "Settings" ? "translate-x-0" : "translate-x-full"} transition duration-300 ease-in-out removeScrollbar`,
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "w-full",
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h1", {
+                        className: "text-4xl font-semibold text-white",
+                        children: [
+                            subLink,
+                            " settings."
+                        ]
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                        className: "mt-2 text-neutral-400",
+                        children: "View all your account information. "
+                    })
+                ]
+            }),
+            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                className: "w-full h-full py-24",
+                children: /*#__PURE__*/ jsx_runtime_.jsx(components_ProfileSettings, {})
+            })
+        ]
+    });
+};
+/* harmony default export */ const components_Settings = (Settings);
+
+;// CONCATENATED MODULE: ./components/Overview.js
+
+
+
+
+
+
+
+const Overview = ()=>{
+    const { bankAccounts , setBankAccounts  } = (0,external_react_.useContext)(creditcards/* ItemsContext */.c);
+    const { signedUser  } = (0,external_react_.useContext)(context_signedUser/* UserContext */.S);
+    const { tab  } = (0,external_react_.useContext)(currentTab/* TabContext */.q);
+    const { 0: debtDueSoon , 1: setDebtDueSoon  } = (0,external_react_.useState)();
+    const { 0: totalDebt , 1: setTotalDebt  } = (0,external_react_.useState)();
+    const { 0: userLocale , 1: setUserLocale  } = (0,external_react_.useState)("en-us");
+    //TODO, use effect is used to determine users language preference
+    (0,external_react_.useEffect)(()=>{
+        let isMounted = true;
+        // TODO, figure out the users language preference, used to format the currency display.
+        const navigator = navigator?.languages && navigator?.languages.length ? navigator?.languages[0] : navigator?.language;
+        if (isMounted) {
+            setUserLocale(navigator || "en-us");
+        }
+        console.log("infinitelooptest");
+        // TODO, cleanup function
+        return ()=>{
+            isMounted = false;
+        };
+    }, []);
+    // TODO, use effect is used to set a total debt. 
+    (0,external_react_.useEffect)(()=>{
+        (()=>{
+            let total = 0;
+            bankAccounts.forEach((bankAccount)=>{
+                bankAccount.accounts?.map((account)=>{
+                    if (account.subtype != "credit card") {
+                        return;
+                    }
+                    total += account.balances.current;
+                });
+            });
+            setTotalDebt(total);
+        })();
+        console.log("infinitelooptest");
+    }, [
+        bankAccounts
+    ]);
+    // TODO, use effect is used to display a card that is being due soon. Preferebly those that have a statement balance on them.
+    (0,external_react_.useEffect)(()=>{
+        (()=>{
+            const creditCardsLiability = [];
+            bankAccounts.forEach((bankAccount)=>{
+                // TODO, only display accounts that are credit cards
+                bankAccount.accounts?.map((account)=>{
+                    if (account.subtype != "credit card") {
+                        return;
+                    }
+                    // TODO, get how many days are left till the user has to pay.
+                    const today = new Date();
+                    const dueDate = new Date(account.accLiability.next_payment_due_date);
+                    if (account.accLiability.minimum_payment_amount === 0) {
+                        dueDate.setMonth(dueDate.getMonth() + 1);
+                    }
+                    const differenceInTime = dueDate.getTime() - today.getTime();
+                    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+                    if (differenceInDays < 0) {
+                        return;
+                    }
+                    console.log(account);
+                    // TODO, create an object displaying necessary information.
+                    const cardObj = {
+                        account: account,
+                        due: account.balances.current,
+                        statement: account.accLiability.last_statement_balance - account.accLiability.last_payment_amount,
+                        minimumDue: account.accLiability.minimum_payment_amount,
+                        daysTillDue: parseInt(differenceInDays),
+                        dueDate: account.accLiability.next_payment_due_date,
+                        currencyCode: account.balances.iso_currency_code
+                    };
+                    creditCardsLiability.push(cardObj);
+                    console.log(cardObj);
+                });
+            });
+            // TODO, sort credit cards by which card is due first.
+            creditCardsLiability.sort((a, b)=>parseInt(a.daysTillDue) - parseFloat(b.daysTillDue));
+            setDebtDueSoon(creditCardsLiability);
+            console.log("infinitelooptest");
+        })();
+    }, [
+        bankAccounts.length
+    ]);
+    // SPENDING BY MONTH, INTEGRATE SOON IDK
+    (0,external_react_.useEffect)(()=>{
+        let accounts = [];
+        const trackSpending = async ()=>{
+            bankAccounts.forEach((bankAccount)=>{
+                bankAccount.accounts?.forEach((account)=>{
+                    accounts.push(account);
+                });
+            });
+        };
+        trackSpending();
+        console.log("infinitelooptest");
+    }, [
+        bankAccounts.length
+    ]);
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+        className: `absolute inset-0 h-full px-10 py-16 z-20 bg-neutral-900 overflow-y-scroll removeScrollbar ${tab === "Overview" ? "translate-x-0" : "translate-x-full"} transition`,
+        children: [
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "w-full mb-24",
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h1", {
+                        className: "text-2xl font-semibold text-white md:text-3xl xl:text-4xl",
+                        children: [
+                            "Hi, ",
+                            signedUser.firstName,
+                            ", welcome back!"
+                        ]
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                        className: "mt-2 text-neutral-400",
+                        children: "Let's give you a quick overview of your current week."
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "w-full h-full",
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "grid grid-cols-6 gap-6 ",
+                        children: [
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "relative w-full col-span-6 p-6 shadow-xl lg:col-span-2 bg-zinc-800 rounded-xl",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.CashIcon, {
+                                        className: "mb-2 text-white w-14 h-14"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                                        className: "text-3xl font-medium text-white",
+                                        children: totalDebt?.toLocaleString(userLocale, {
+                                            style: "currency",
+                                            currency: "USD"
+                                        })
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                        className: "mt-1 text-sm text-neutral-400",
+                                        children: "Total credit card debt"
+                                    })
+                                ]
+                            }),
+                            debtDueSoon?.length != 0 && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "relative w-full col-span-6 p-6 shadow-xl lg:col-span-4 bg-zinc-800 rounded-xl",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.CreditCardIcon, {
+                                        className: "mb-2 text-white w-14 h-14"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                        className: "text-xl font-medium text-white",
+                                        children: debtDueSoon?.length > 1 ? "Debts are due soon" : "A debt is due soon."
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                        className: "grid w-full grid-cols-1 gap-6 p-4 my-2 sm:grid-cols-2 bg-zinc-900 rounded-xl",
+                                        children: debtDueSoon?.map((debt, index)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                                children: index != 3 && /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                                    children: debt?.due > 0 && debt.daysTillDue < 30 && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                        className: `${index === 0 ? "sm:col-span-2 bg-neutral-500 p-4 rounded-xl" : "sm:col-span-1 bg-neutral-600/50 rounded-xl p-4"}`,
+                                                        children: [
+                                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                                className: "flex flex-wrap items-center justify-start gap-2 text-xs",
+                                                                children: [
+                                                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                        className: "font-medium text-neutral-300",
+                                                                        children: debt.account.name
+                                                                    }),
+                                                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                        className: "text-neutral-300",
+                                                                        children: [
+                                                                            "*",
+                                                                            debt.account.mask
+                                                                        ]
+                                                                    })
+                                                                ]
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                                className: "mt-4 text-sm text-neutral-300/75",
+                                                                children: debt.minimumDue != 0 ? "Statement balance" : "Total balance"
+                                                            }),
+                                                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                                className: "text-2xl font-medium text-white",
+                                                                children: debt.minimumDue != 0 ? debt.statement?.toLocaleString(userLocale, {
+                                                                    style: "currency",
+                                                                    currency: debt.currencyCode
+                                                                }) : debt.due.toLocaleString(userLocale, {
+                                                                    style: "currency",
+                                                                    currency: debt.currencyCode
+                                                                })
+                                                            }),
+                                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                                className: "mt-4 text-sm text-neutral-300/75",
+                                                                children: [
+                                                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                        children: "You have "
+                                                                    }),
+                                                                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                        className: "font-medium text-white",
+                                                                        children: [
+                                                                            debt.daysTillDue,
+                                                                            " "
+                                                                        ]
+                                                                    }),
+                                                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                        className: "font-medium text-white",
+                                                                        children: debt.daysTillDue === 1 ? "day " : "days "
+                                                                    }),
+                                                                    /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                                                        children: "left to pay this off."
+                                                                    })
+                                                                ]
+                                                            })
+                                                        ]
+                                                    })
+                                                })
+                                            }))
+                                    })
+                                ]
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "pb-24",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                className: "mt-24 mb-2 text-sm font-medium text-neutral-400",
+                                children: "Accounts needed extra action."
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                className: "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl ",
+                                children: bankAccounts.map((bankAccount)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                        children: bankAccount.error && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                            className: "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md",
+                                            children: [
+                                                /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                                    className: "mb-3 text-xl text-neutral-400",
+                                                    children: bankAccount.institution
+                                                }),
+                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                    className: "mb-5 text-sm text-neutral-600",
+                                                    children: [
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                            className: "text-neutral-400",
+                                                            children: "This account requires extra attention."
+                                                        }),
+                                                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                                            className: "text-xs",
+                                                            children: [
+                                                                "Error: ",
+                                                                bankAccount.error
+                                                            ]
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ jsx_runtime_.jsx(components_PlaidButton, {
+                                                    text: bankAccount.error == "ITEM_LOGIN_REQUIRED" && "Relogin",
+                                                    customCSS: "w-full",
+                                                    removeOldItem: bankAccount.id
+                                                })
+                                            ]
+                                        }, bankAccount.error)
+                                    }))
+                            })
+                        ]
+                    })
+                ]
+            })
+        ]
+    });
+};
+/* harmony default export */ const components_Overview = (Overview);
+
+;// CONCATENATED MODULE: ./function/getAccountTransactions.js
+const getAccountTransactions_https = __webpack_require__(5687);
+const getAccountTransactions = async (accounts)=>{
+    const accountTransactions = await Promise.all(accounts.map(async (account)=>{
+        console.log(account);
+        // TODO, figure out how many months is it from the current month to January. 
+        let today = new Date().getMonth() + 1;
+        let monthsTillJan = 0;
+        while(today > 1){
+            monthsTillJan += 1;
+            today--;
+        }
+        // Get todays date
+        const endDate = new Date();
+        let endDateFormat = endDate.toISOString().substring(0, 10);
+        // Subtract new date with monthsTillJan variable YTD transactions
+        const startDate = new Date(endDate.setMonth(endDate.getMonth() - monthsTillJan));
+        let startDateFormat = startDate.toISOString().substring(0, 10);
+        // TODO, fetch transactions of account that was clicked
+        const getTransactionsResponse = await fetch(`${process.env.DOMAIN}/api/transactions/${account.access_token}/${startDateFormat}/${endDateFormat}`, {
+            method: "GET",
+            agent: new getAccountTransactions_https.Agent({
+                rejectUnauthorized: false
+            })
+        });
+        const { transactions  } = await getTransactionsResponse.json();
+        try {
+            return transactions;
+        } catch (e) {
+            return e;
+        }
+    }));
+    return accountTransactions;
+};
+
+;// CONCATENATED MODULE: ./function/verifyToken.js
+const verifyToken_https = __webpack_require__(5687);
 const verifyToken = async ()=>{
     const verifyToken = await fetch(`${process.env.DOMAIN}/cookie/verify`, {
         method: "GET",
@@ -2450,53 +2310,14 @@ const verifyToken = async ()=>{
             Accept: "application/json",
             "Content-Type": "application/json"
         },
-        agent: new https.Agent({
+        agent: new verifyToken_https.Agent({
             rejectUnauthorized: false
         })
     });
     console.log(verifyToken);
 };
 
-
-/***/ }),
-
-/***/ 5947:
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Home),
-/* harmony export */   "getServerSideProps": () => (/* binding */ getServerSideProps)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_creditcards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6305);
-/* harmony import */ var _context_signedUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5208);
-/* harmony import */ var _context_currentTab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6464);
-/* harmony import */ var _components_CreditCards__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2184);
-/* harmony import */ var _components_UserProfile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8623);
-/* harmony import */ var _components_AccountsList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2302);
-/* harmony import */ var _components_Transactions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4954);
-/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9344);
-/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _function_getUserItems__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(4547);
-/* harmony import */ var _function_getItemInfo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(6637);
-/* harmony import */ var _function_getAccountLiabilities__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(1915);
-/* harmony import */ var _components_Settings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(1394);
-/* harmony import */ var _components_Overview__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(9042);
-/* harmony import */ var _function_getAccountTransactions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(8940);
-/* harmony import */ var _function_verifyToken__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(435);
-/* harmony import */ var _context_themePreference__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(7609);
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(9915);
-/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(3582);
-/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(cors__WEBPACK_IMPORTED_MODULE_18__);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([js_cookie__WEBPACK_IMPORTED_MODULE_17__]);
-js_cookie__WEBPACK_IMPORTED_MODULE_17__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
-
-
+;// CONCATENATED MODULE: ./pages/user/dashboard.js
 
 
 
@@ -2517,19 +2338,19 @@ js_cookie__WEBPACK_IMPORTED_MODULE_17__ = (__webpack_async_dependencies__.then ?
 
 function Home({ currentUser  }) {
     console.log(currentUser);
-    const { setSignedUser , signedUser  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_signedUser__WEBPACK_IMPORTED_MODULE_3__/* .UserContext */ .S);
-    const { tab  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_currentTab__WEBPACK_IMPORTED_MODULE_4__/* .TabContext */ .q);
-    const { theme  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_themePreference__WEBPACK_IMPORTED_MODULE_16__/* .ThemeContext */ .N);
-    const { bankAccounts , setBankAccounts  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_creditcards__WEBPACK_IMPORTED_MODULE_2__/* .ItemsContext */ .c);
-    const { 0: loading , 1: setLoading  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
+    const { setSignedUser , signedUser  } = (0,external_react_.useContext)(context_signedUser/* UserContext */.S);
+    const { tab  } = (0,external_react_.useContext)(currentTab/* TabContext */.q);
+    const { theme  } = (0,external_react_.useContext)(themePreference/* ThemeContext */.N);
+    const { bankAccounts , setBankAccounts  } = (0,external_react_.useContext)(creditcards/* ItemsContext */.c);
+    const { 0: loading , 1: setLoading  } = (0,external_react_.useState)(true);
     setSignedUser(currentUser);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+    (0,external_react_.useEffect)(()=>{
         if (currentUser) {
             setLoading(true);
             const loader = async ()=>{
-                const userAccounts = await (0,_function_getUserItems__WEBPACK_IMPORTED_MODULE_19__/* .getUserItems */ .R)(currentUser.userId);
-                const userAccountsInfo = await (0,_function_getItemInfo__WEBPACK_IMPORTED_MODULE_10__/* .getItemInfo */ .T)(userAccounts);
-                const accountsLiabilities = await (0,_function_getAccountLiabilities__WEBPACK_IMPORTED_MODULE_11__/* .getAccountLiabilities */ .G)(userAccounts);
+                const userAccounts = await getUserItems(currentUser.userId);
+                const userAccountsInfo = await getItemInfo(userAccounts);
+                const accountsLiabilities = await getAccountLiabilities(userAccounts);
                 // TODO, format items, bankaccounts, and bank account liabilities into one object
                 // NOTE, if theres an easier way of doing this pls redo
                 let formatAccounts = [];
@@ -2564,48 +2385,48 @@ function Home({ currentUser  }) {
             loader();
         }
     }, []);
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: loading ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+    return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+        children: loading ? /*#__PURE__*/ jsx_runtime_.jsx("div", {
             className: "fixed inset-0 flex items-center justify-center text-white bg-neutral-900 ",
-            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
+            children: /*#__PURE__*/ jsx_runtime_.jsx("h1", {
                 className: "text-3xl font-bold animate-pulse",
                 children: "Loading your data"
             })
-        }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("main", {
-            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
+        }) : /*#__PURE__*/ jsx_runtime_.jsx("main", {
+            children: /*#__PURE__*/ jsx_runtime_.jsx("section", {
                 className: `w-full h-screen mx-auto overflow-hidden ${theme === "dark" ? "bg-neutral-900" : "bg-white"}`,
-                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                     className: "grid w-full h-full grid-cols-6",
                     children: [
-                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                             className: `flex flex-col justify-between w-full h-full p-2 rounded-tr-xl ${theme === "dark" ? "bg-neutral-800/50" : "bg-white"} rounded-br-xl sm:p-4`,
                             children: [
-                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("h1", {
                                     className: "w-full max-w-xs mt-10 ml-auto text-3xl font-semibold text-center text-white ",
                                     children: [
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                             className: `hidden lg:block ${theme === "dark" ? "text-white" : "text-neutral-900"}`,
                                             children: "Poshly"
                                         }),
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                             className: `block lg:hidden ${theme === "dark" ? "text-white" : "text-neutral-900"}`,
                                             children: "M"
                                         })
                                     ]
                                 }),
-                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_UserProfile__WEBPACK_IMPORTED_MODULE_6__/* ["default"] */ .Z, {}),
-                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_AccountsList__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z, {})
+                                /*#__PURE__*/ jsx_runtime_.jsx(UserProfile, {}),
+                                /*#__PURE__*/ jsx_runtime_.jsx(AccountsList, {})
                             ]
                         }),
-                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
                             className: "relative w-full h-full col-span-5 bg-neutral-900 rounded-tl-3xl rounded-bl-3xl removeScrollbar",
-                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                 className: "relative h-full p-10",
                                 children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Overview__WEBPACK_IMPORTED_MODULE_13__/* ["default"] */ .Z, {}),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_CreditCards__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {}),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Transactions__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z, {}),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Settings__WEBPACK_IMPORTED_MODULE_12__/* ["default"] */ .Z, {})
+                                    /*#__PURE__*/ jsx_runtime_.jsx(components_Overview, {}),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(CreditCards, {}),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(Transactions, {}),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(components_Settings, {})
                                 ]
                             })
                         })
@@ -2616,55 +2437,32 @@ function Home({ currentUser  }) {
     });
 };
 const getServerSideProps = async (context)=>{
-    const cookies = context.req.headers.cookie;
     try {
+        const cookies = context.req.headers.cookie;
         // TODO, verify HTTP cookie
         const userJWT = cookies.slice(5);
-        if ((0,jsonwebtoken__WEBPACK_IMPORTED_MODULE_9__.verify)(userJWT, process.env.ACCESS_TOKEN_SECRET)) {
+        if ((0,external_jsonwebtoken_namespaceObject.verify)(userJWT, process.env.ACCESS_TOKEN_SECRET)) {
             return {
                 props: {
-                    currentUser: (0,jsonwebtoken__WEBPACK_IMPORTED_MODULE_9__.decode)(userJWT)
+                    currentUser: (0,external_jsonwebtoken_namespaceObject.decode)(userJWT)
                 }
             };
         } else {
             return {
                 props: {
-                    currentUser: null
+                    currentUser: cookies
                 }
             };
         }
     } catch (e) {
         return {
             props: {
-                currentUser: null
+                currentUser: e
             }
         };
     }
 };
 
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } });
-
-/***/ }),
-
-/***/ 1143:
-/***/ ((module) => {
-
-module.exports = require("@heroicons/react/solid");
-
-/***/ }),
-
-/***/ 3582:
-/***/ ((module) => {
-
-module.exports = require("cors");
-
-/***/ }),
-
-/***/ 9344:
-/***/ ((module) => {
-
-module.exports = require("jsonwebtoken");
 
 /***/ }),
 
@@ -2836,24 +2634,10 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ 5628:
-/***/ ((module) => {
-
-module.exports = require("react-plaid-link");
-
-/***/ }),
-
 /***/ 997:
 /***/ ((module) => {
 
 module.exports = require("react/jsx-runtime");
-
-/***/ }),
-
-/***/ 9915:
-/***/ ((module) => {
-
-module.exports = import("js-cookie");;
 
 /***/ }),
 
@@ -2871,7 +2655,7 @@ module.exports = require("https");
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [952,664,267], () => (__webpack_exec__(5947)));
+var __webpack_exports__ = __webpack_require__.X(0, [952,664,267], () => (__webpack_exec__(1312)));
 module.exports = __webpack_exports__;
 
 })();
