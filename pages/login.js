@@ -42,16 +42,12 @@ const Login = () => {
   const handleSubmit = async (e) =>{
     e.preventDefault()
     // TODO, send user given data to api endpoint.
-    const domain = process.env.NEXT_PUBLIC_DOMAIN
-    console.log(domain)
     const loginResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/user/login`,{
       method:"POST",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        // Change to poshlyfinancedomain.com once we figure out the issue
         'Access-Control-Allow-Origin' : '*'
-        // Change to poshlyfinancedomain.com once we figure out the issue
       },
       body:JSON.stringify({
         email:values.email,

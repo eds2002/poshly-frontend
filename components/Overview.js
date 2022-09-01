@@ -42,7 +42,6 @@ const Overview = () => {
       })
       setTotalDebt(total)
     })()
-    console.log('infinitelooptest')
   },[bankAccounts])
 
 
@@ -69,8 +68,6 @@ const Overview = () => {
             return  
           }
 
-          console.log(account)
-
           // TODO, create an object displaying necessary information.
           const cardObj = {
             account:account,
@@ -82,14 +79,12 @@ const Overview = () => {
             currencyCode: account.balances.iso_currency_code,
           }
           creditCardsLiability.push(cardObj)
-          console.log(cardObj)
         })
       })
   
       // TODO, sort credit cards by which card is due first.
       creditCardsLiability.sort((a, b) => parseInt(a.daysTillDue) - parseFloat(b.daysTillDue));
       setDebtDueSoon(creditCardsLiability)
-      console.log('infinitelooptest')
     })()
   },[bankAccounts.length])
 
@@ -106,14 +101,13 @@ const Overview = () => {
       })
     }
     trackSpending()
-    console.log('infinitelooptest')
   },[bankAccounts.length])
 
   return (
     <div className = {`absolute inset-0 h-full px-10 py-16 z-20 bg-neutral-900 overflow-y-scroll removeScrollbar ${tab === 'Overview' ? 'translate-x-0' : 'translate-x-full'} transition`}>
       <div className = "w-full mb-24">
-        <h1 className = "text-2xl font-semibold text-white md:text-3xl xl:text-4xl">Hi, {signedUser.firstName}, welcome back!</h1>
-        <p className = "mt-2 text-neutral-400">Let&apos;s give you a quick overview of your current week.</p>
+        <h1 className = "text-2xl font-semibold text-white md:text-3xl xl:text-4xl">Hi, {signedUser.firstName}!</h1>
+        <p className = "mt-2 text-neutral-400">{bankAccounts.length == 0 ? 'Welcome to poshly!' : "Let's give you a quick overview of your current week."}</p>
       </div>
       <div className = "w-full h-full">
         <div className = "grid grid-cols-6 gap-6 ">
@@ -127,13 +121,13 @@ const Overview = () => {
           {debtDueSoon?.length != 0 && (
             <div className = "relative w-full col-span-6 p-6 shadow-xl lg:col-span-4 bg-zinc-800 rounded-xl">
               <CreditCardIcon className = "mb-2 text-white w-14 h-14"/>
-              <p className = 'text-xl font-medium text-white'>{debtDueSoon?.length > 1 ? ('Debts are due soon') : ('A debt is due soon.')}</p>
+              <p className = 'text-xl font-medium text-white'>{debtDueSoon?.length > 1 ? ('Debts due:') : ('A debt is due:')}</p>
               <div className = "grid w-full grid-cols-1 gap-6 p-4 my-2 sm:grid-cols-2 bg-zinc-900 rounded-xl">
                 {debtDueSoon?.map((debt,index)=>(
                 <>
                   {index != 3 && (
                     <>
-                      {(debt?.due > 0 && debt.daysTillDue < 30) && (
+                      {(debt?.due > 0) && (
                         <div className = {`${index === 0 ? ('sm:col-span-2 bg-neutral-500 p-4 rounded-xl') : ('sm:col-span-1 bg-neutral-600/50 rounded-xl p-4')}`}>
                           <p className = 'flex flex-wrap items-center justify-start gap-2 text-xs'>
                             <span className = "font-medium text-neutral-300">{debt.account.name}</span>

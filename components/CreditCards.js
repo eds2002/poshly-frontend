@@ -52,97 +52,103 @@ export default function CreditCards({selected}){
         <p className = "mt-2 text-neutral-400">View all accounts you have linked with us.</p>
       </div>
       <div className = "w-full h-full">
-        {bankAccounts.map((bankAccount)=>(
-          <>
-            {bankAccount.error && (
-              <div className = "my-24">
-                <p className = "mb-2 text-sm font-medium text-neutral-400">Accounts that need extra attention.</p>
-                <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
-                  <div className = "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md" key = {bankAccount.error}>
-                    <h3 className = "mb-3 text-xl text-neutral-400">{bankAccount.institution}</h3>
-                    <div className = "mb-5 text-sm text-neutral-600">
-                      <p className = "text-neutral-400">This account requires extra attention.</p>
-                      <p className = "text-xs">Error: {bankAccount.error}</p>
+        {bankAccounts.length == 0 ?
+          <div className = "w-full h-[80%] flex items-center justify-center flex-col">
+            <div className = "flex flex-col items-center justify-center p-6 bg-neutral-800 rounded-xl">
+              <h1 className = "max-w-xs text-3xl font-medium text-center text-white">Add your first account using Plaid!</h1>
+              <PlaidButton customCSS = 'text-white mt-4 rounded-xl hover:bg-red-600/50 hover:text-white bg-red-600 shadow-xl' text = 'Link your first account'/>
+            </div>
+          </div>
+        :
+        <>
+          {bankAccounts.map((bankAccount)=>(
+            <>
+              {bankAccount.error && (
+                <div className = "my-24">
+                  <p className = "mb-2 text-sm font-medium text-neutral-400">Accounts that need extra attention.</p>
+                  <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
+                    <div className = "flex flex-col items-start justify-center w-full grid-cols-1 px-4 py-6 transition rounded-lg bg-neutral-800 hover:shadow-md" key = {bankAccount.error}>
+                      <h3 className = "mb-3 text-xl text-neutral-400">{bankAccount.institution}</h3>
+                      <div className = "mb-5 text-sm text-neutral-600">
+                        <p className = "text-neutral-400">This account requires extra attention.</p>
+                        <p className = "text-xs">Error: {bankAccount.error}</p>
+                      </div>
+                      <PlaidButton text = {bankAccount.error == 'ITEM_LOGIN_REQUIRED' && 'Relogin'} customCSS = 'w-full' removeOldItem = {bankAccount.id}/>
                     </div>
-                    <PlaidButton text = {bankAccount.error == 'ITEM_LOGIN_REQUIRED' && 'Relogin'} customCSS = 'w-full' removeOldItem = {bankAccount.id}/>
                   </div>
                 </div>
-              </div>
-            )}
-          </>
-        ))}
+              )}
+            </>
+          ))}
 
-        <div className = "my-24">
-          <p className = "mb-2 text-sm font-medium text-neutral-400">Credit Cards</p>
-          <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
-            {bankAccounts.map((bankAccount)=>(
-              <>
-                {/* TODO, handle cards with error */}
-                {!bankAccount.error && (
-                  <>
-                  {bankAccount.accounts.map((acc)=>(
+          <div className = "my-24">
+            <p className = "mb-2 text-sm font-medium text-neutral-400">Credit Cards</p>
+            <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
+              {bankAccounts.map((bankAccount)=>(
+                <>
+                  {/* TODO, handle cards with error */}
+                  {!bankAccount.error && (
                     <>
-                      {acc.subtype == 'credit card' && (
-                      <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
-                        <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
-                        <div className = "mt-2">
-                          <p className = "flex flex-col text-xl text-neutral-400">
-                            <span className = "text-sm text-gray-200">Total Balance</span>
-                            <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
-                          </p>
+                    {bankAccount.accounts.map((acc)=>(
+                      <>
+                        {acc.subtype == 'credit card' && (
+                        <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
+                          <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
+                          <div className = "mt-2">
+                            <p className = "flex flex-col text-xl text-neutral-400">
+                              <span className = "text-sm text-gray-200">Total Balance</span>
+                              <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
+                            </p>
+                          </div>
+                          <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
+                          onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
+                          >View Account</button>
                         </div>
-                        <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
-                        onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
-                        >View Account</button>
-                      </div>
-                      )}
+                        )}
+                      </>
+                    ))}
                     </>
-                  ))}
-                  </>
-                )}
-              </>
-            ))}
+                  )}
+                </>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div className = "my-24">
-          <p className = "mb-2 text-sm font-medium text-neutral-400">Checking Accounts</p>
-          <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
-            {bankAccounts.map((bankAccount)=>(
-              <>
-                {/* TODO, handle cards with error */}
-                {!bankAccount.error && (
-                  <>
-                  {bankAccount.accounts.map((acc)=>(
+          <div className = "my-24">
+            <p className = "mb-2 text-sm font-medium text-neutral-400">Checking Accounts</p>
+            <div className = "grid grid-cols-1 gap-16 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-neutral-700/10 rounded-xl">
+              {bankAccounts.map((bankAccount)=>(
+                <>
+                  {/* TODO, handle cards with error */}
+                  {!bankAccount.error && (
                     <>
-                      {acc.subtype == 'checking' && (
-                      <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
-                        <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
-                        <div className = "mt-2">
-                          <p className = "flex flex-col text-xl text-neutral-400">
-                            <span className = "text-sm text-gray-200">Total Balance</span>
-                            <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
-                          </p>
+                    {bankAccount.accounts.map((acc)=>(
+                      <>
+                        {acc.subtype == 'checking' && (
+                        <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
+                          <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
+                          <div className = "mt-2">
+                            <p className = "flex flex-col text-xl text-neutral-400">
+                              <span className = "text-sm text-gray-200">Total Balance</span>
+                              <span className = "font-medium text-red-400">{(acc.balances?.current).toLocaleString('en-us',{style:"currency",currency:acc.balances.iso_currency_code})}</span>
+                            </p>
+                          </div>
+                          <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
+                          onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
+                          >View Account</button>
                         </div>
-                        <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
-                        onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
-                        >View Account</button>
-                      </div>
-                      )}
+                        )}
+                      </>
+                    ))}
                     </>
-                  ))}
-                  </>
-                )}
-              </>
-            ))}
+                  )}
+                </>
+              ))}
+            </div>
           </div>
-        </div>
-
-
-        
-
-            {/* BANK ACCOUNTS THAT NEED EXTRA ATTENTION DIV */}
-        <PlaidButton customCSS = 'fixed bottom-5 right-5 h-16  rounded-xl w-16 text-neutral-900 hover:bg-red-600/50 hover:text-white py-4 bg-red-600 shadow-xl'/>
+          <PlaidButton customCSS = 'fixed bottom-5 right-5 h-16  rounded-xl w-16 text-white hover:bg-red-600/50 hover:text-white py-4 bg-red-600 shadow-xl'/>
+        </>
+        }
       </div>
     </div>
   )

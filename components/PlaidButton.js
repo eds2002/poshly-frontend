@@ -108,7 +108,7 @@ const PlaidButton = ({text, customCSS, removeOldItem}) => {
   })
   return (
     <button onClick = {()=> openPlaid()} 
-    className = {`px-4 py-3 font-medium text-white transition bg-red-500 rounded-md hover:bg-red-500/75 disabled:bg-gray-500 disabled:text-white flex items-center justify-center gap-x-3
+    className = {`px-4 py-3 font-medium  transition bg-red-500 rounded-md hover:bg-red-500/75 disabled:bg-gray-500 disabled:text-white flex items-center justify-center gap-x-3
       ${customCSS}
     `}
     disabled = {!ready}>

@@ -17,9 +17,8 @@ import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 
 export default function Home({currentUser}) {
-  console.log(currentUser)
   const {setSignedUser, signedUser} = useContext(UserContext)
-  const {tab} = useContext(TabContext)
+  const {tab,setTab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
   const {bankAccounts,setBankAccounts} = useContext(ItemsContext)
   const [loading, setLoading] = useState(true)
@@ -76,9 +75,9 @@ export default function Home({currentUser}) {
           <section className = {`w-full h-screen mx-auto overflow-hidden ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}>
             <div className = "grid w-full h-full grid-cols-6">
                 <div className = {`flex flex-col justify-between w-full h-full p-2 rounded-tr-xl ${theme === 'dark' ? 'bg-neutral-800/50' : 'bg-white'} rounded-br-xl sm:p-4`}>
-                    <h1 className = "w-full max-w-xs mt-10 ml-auto text-3xl font-semibold text-center text-white ">
-                      <span className = {`hidden lg:block ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>Poshly</span>
-                      <span className={`block lg:hidden ${theme === 'dark' ? 'text-white' : 'text-neutral-900'}`}>M</span>
+                    <h1 className = "w-full max-w-xs mt-10 ml-auto text-3xl font-semibold text-center text-white" onClick = {()=>setTab('Overview')}>
+                      <span className = {`hidden lg:block ${theme === 'dark' ? 'text-red-500' : 'text-neutral-900'}`}>Poshly</span>
+                      <span className={`block lg:hidden ${theme === 'dark' ? 'text-red-500' : 'text-neutral-900'}`}>P</span>
                     </h1>
                     <UserProfile/>
                     <AccountsList/>
@@ -110,12 +109,18 @@ export const getServerSideProps = async (context)=>{
       }
     }else{
       return{
-        props:{currentUser:cookies}
+        redirect: {
+          permanent: false,
+          destination: "/login"
+        }
       }
     }
   }catch(e){
     return{
-      props:{currentUser:e}
+      redirect: {
+        permanent: false,
+        destination: "/login"
+      }
     }
   }
 }

@@ -4,9 +4,11 @@ import { TabContext } from "../context/currentTab";
 import { useContext, useState } from "react";
 import {HomeIcon, CogIcon, LogoutIcon, UserIcon, CollectionIcon, KeyIcon } from '@heroicons/react/solid'
 import { ThemeContext } from "../context/themePreference";
+import { useRouter } from "next/router";
 
 
 export default function AccountsList(){
+  const router = useRouter()
   const {tab,setTab, subLink,setSublink} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
   const tabs = [
@@ -38,18 +40,20 @@ export default function AccountsList(){
           },
           icon: <UserIcon className = "w-5 h-5 "/>,
         },
-        {
-          name:'Accounts',
-          func: () =>{
-            setSublink('Accounts')
-          },
-          icon: <CollectionIcon className = "w-5 h-5 "/>,
-        },
       ]
     },
   ]
 
-  console.log(tab)  
+  const logoutUser = async () =>{
+    const data = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/user/logout`,{
+      method:"GET",
+      credentials: "include",
+    })
+    const {code} = await data.json()
+    if(code === 200){
+      router.push('/login')
+    }
+  }
 
   return (
     <div className = "relative w-full h-full max-w-xs mt-8 mb-10 ml-auto lg:mt-0">
@@ -86,10 +90,9 @@ export default function AccountsList(){
           </>
         ))}
       </nav>
-      <li className = {`absolute bottom-0 flex items-center justify-start w-full p-4 list-none cursor-pointer rounded-xl ${theme === 'dark' ? 'hover:text-red-500 text-neutral-200 hover:bg-neutral-900/50' : 'hover:text-red-500 text-neutral-900 hover:bg-neutral-200'} gap-x-3`}>
-
-
-
+      <li className = {`absolute bottom-0 flex items-center justify-start w-full p-4 list-none cursor-pointer rounded-xl ${theme === 'dark' ? 'hover:text-red-500 text-neutral-200 hover:bg-neutral-900/50' : 'hover:text-red-500 text-neutral-900 hover:bg-neutral-200'} gap-x-3`}
+      onClick = {()=>logoutUser()}
+      >
         <LogoutIcon className = "mx-auto w-7 h-7 lg:mx-0"/>
         <span className="hidden lg:block">Sign out</span>
       </li>

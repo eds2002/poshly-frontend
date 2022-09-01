@@ -57,8 +57,8 @@ const TotalSpendBox = ({display, timeframe, userLocale, setOpenTrackSpending}) =
   },[timeframe, display])
   return (
       <div className = {`
-      ${display.subtype === 'credit card' && ('col-span-4 p-6 bg-sky-600 rounded-xl xl:col-span-4')}
-      ${display.subtype === 'checking' && ('col-span-4 p-6 bg-sky-600 rounded-xl xl:col-span-2')}
+      ${display.subtype === 'credit card' && ('col-span-4 p-6 bg-sky-600 rounded-xl xl:col-span-4 cursor-pointer hover:bg-sky-500 transition')}
+      ${display.subtype === 'checking' && ('col-span-4 p-6 bg-sky-600 rounded-xl xl:col-span-2 cursor-pointer hover:bg-sky-500 transition')}
       `}
       onClick = {()=>handleClick()}
       >
