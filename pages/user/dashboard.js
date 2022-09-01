@@ -100,8 +100,8 @@ export default function Home({currentUser}) {
 }
 
 export const getServerSideProps = async (context)=>{
-  const cookies = context.req.headers.cookie;
   try{
+    const cookies = context.req.headers.cookie;
     // TODO, verify HTTP cookie
     const userJWT = cookies.slice(5)
     if(verify(userJWT, process.env.ACCESS_TOKEN_SECRET)){
@@ -115,7 +115,7 @@ export const getServerSideProps = async (context)=>{
     }
   }catch(e){
     return{
-      props:{currentUser:cookies}
+      props:{currentUser:e}
     }
   }
 }
