@@ -15,8 +15,6 @@ import Overview from '../../components/Overview';
 import { getAccountTransactions } from '../../function/getAccountTransactions';
 import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
-import Cookies from 'js-cookie';
-import e from 'cors';
 
 export default function Home({currentUser}) {
   console.log(currentUser)
