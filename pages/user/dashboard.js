@@ -110,12 +110,12 @@ export const getServerSideProps = async (context)=>{
       }
     }else{
       return{
-        props:{currentUser:null}
+        props:{currentUser:cookies}
       }
     }
   }catch(e){
     return{
-      props:{currentUser:null}
+      props:{currentUser:cookies}
     }
   }
 }
