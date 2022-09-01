@@ -17,7 +17,8 @@ import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 import Cookies from 'js-cookie';
 
-export default function Home() {
+export default function Home({cookies}) {
+  console.log(cookies)
   const {setSignedUser, signedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
@@ -76,11 +77,11 @@ export default function Home() {
 
       }else{
         setLoading(true)
-        alert('bro, you really do not belong here')
+        console.log('Failed to verify token')
       }
     }else{
       setLoading(true)
-      alert('bro you do not belong here')
+      console.log('Couldnt get cookie value')
     }
     
   },[])
@@ -116,6 +117,13 @@ export default function Home() {
       }
     </>
   )
+}
+
+export const getServerSideProps = async (context)=>{
+  const cookies = context.req.headers.cookie;
+  return{
+    props:{cookies:cookies}
+  }
 }
 
 

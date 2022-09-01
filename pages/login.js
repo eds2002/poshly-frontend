@@ -74,8 +74,7 @@ const Login = () => {
         const {code} = await setCookieResponse.json()
         switch(code){
           case 201:
-            console.log(code)
-            // router.push('/user/dashboard')
+            router.push('/user/dashboard')
             break;
           case 401:
             alert('yo ngl error in something you did bro')
