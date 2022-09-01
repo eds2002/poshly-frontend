@@ -16,74 +16,56 @@ import { getAccountTransactions } from '../../function/getAccountTransactions';
 import { verifyToken } from '../../function/verifyToken';
 import { ThemeContext } from '../../context/themePreference';
 import Cookies from 'js-cookie';
+import e from 'cors';
 
-export default function Home({cookies}) {
-  console.log(cookies)
+export default function Home({currentUser}) {
+  console.log(currentUser)
   const {setSignedUser, signedUser} = useContext(UserContext)
   const {tab} = useContext(TabContext)
   const {theme} = useContext(ThemeContext)
   const {bankAccounts,setBankAccounts} = useContext(ItemsContext)
   const [loading, setLoading] = useState(true)
-
+  setSignedUser(currentUser)
   useEffect(()=>{
-    let cookieValue = Cookies.get('user')
-    // TODO, check if cookie value exists
-    if(cookieValue){
-      // TODO, if cookie exists, verify the jwt token
-      if((verify(cookieValue,process.env.NEXT_PUBLIC_ACCESS_TOKEN_SECRET))){
-        setLoading(true)
-        const loader = async () =>{
-          const userAccounts = await getUserItems(decode(cookieValue).userId)
-          const userAccountsInfo = await getItemInfo(userAccounts)
-          const accountsLiabilities = await getAccountLiabilities(userAccounts)
-          // TODO, format items, bankaccounts, and bank account liabilities into one object
-          // NOTE, if theres an easier way of doing this pls redo
-          let formatAccounts = []
-  
-          // TODO, add to formatAccounts arr.
-          userAccountsInfo.forEach((userAccount)=>{
-            formatAccounts.push(userAccount)
-          })
-  
-          // TODO, loop accountsLiabilities
-          accountsLiabilities.forEach((accountLiability)=>{
-            if(accountLiability.accounts){
-              // TODO, loop through format accounts, and check if theres a match
-              formatAccounts.forEach((account,formatAccountIndex)=>{
-                accountLiability.liabilities?.credit?.forEach((accLiability)=>{
-                  // TODO, if theres a match between account ids, get the position number
-                  const pos = account.accounts?.findIndex(account=> account.account_id === accLiability.account_id)
-                  if(pos === undefined){
-                    return
-                  }
-  
-                  // TODO, set new found information into array, positions formataccoutns using the formataccount index, and 
-                  // the accounts with  the new found position
-                  formatAccounts[formatAccountIndex].accounts[pos] = {...formatAccounts[formatAccountIndex].accounts[pos], accLiability } 
-                })
-              })
-            }
-          })
-
-          
-          // ISSUE, please fix this when you get a chance
-          let decodedUser = decode(cookieValue)
-          setSignedUser(decodedUser)
-          console.log(decodedUser)
-          setBankAccounts(formatAccounts)
-          setLoading(false)
-        }
-        loader()
-
-      }else{
-        setLoading(true)
-        console.log('Failed to verify token')
-      }
-    }else{
+    if(currentUser){
       setLoading(true)
-      console.log('Couldnt get cookie value')
+      const loader = async () =>{
+        const userAccounts = await getUserItems(currentUser.userId)
+        const userAccountsInfo = await getItemInfo(userAccounts)
+        const accountsLiabilities = await getAccountLiabilities(userAccounts)
+        // TODO, format items, bankaccounts, and bank account liabilities into one object
+        // NOTE, if theres an easier way of doing this pls redo
+        let formatAccounts = []
+
+        // TODO, add to formatAccounts arr.
+        userAccountsInfo.forEach((userAccount)=>{
+          formatAccounts.push(userAccount)
+        })
+
+        // TODO, loop accountsLiabilities
+        accountsLiabilities.forEach((accountLiability)=>{
+          if(accountLiability.accounts){
+            // TODO, loop through format accounts, and check if theres a match
+            formatAccounts.forEach((account,formatAccountIndex)=>{
+              accountLiability.liabilities?.credit?.forEach((accLiability)=>{
+                // TODO, if theres a match between account ids, get the position number
+                const pos = account.accounts?.findIndex(account=> account.account_id === accLiability.account_id)
+                if(pos === undefined){
+                  return
+                }
+
+                // TODO, set new found information into array, positions formataccoutns using the formataccount index, and 
+                // the accounts with  the new found position
+                formatAccounts[formatAccountIndex].accounts[pos] = {...formatAccounts[formatAccountIndex].accounts[pos], accLiability } 
+              })
+            })
+          }
+        })
+        setBankAccounts(formatAccounts)
+        setLoading(false)
+      }
+      loader()    
     }
-    
   },[])
   return (
     <>
@@ -121,8 +103,22 @@ export default function Home({cookies}) {
 
 export const getServerSideProps = async (context)=>{
   const cookies = context.req.headers.cookie;
-  return{
-    props:{cookies:cookies}
+  try{
+    // TODO, verify HTTP cookie
+    const userJWT = cookies.slice(5)
+    if(verify(userJWT, process.env.ACCESS_TOKEN_SECRET)){
+      return{
+        props:{currentUser:decode(userJWT)}
+      }
+    }else{
+      return{
+        props:{currentUser:null}
+      }
+    }
+  }catch(e){
+    return{
+      props:{currentUser:null}
+    }
   }
 }
 
