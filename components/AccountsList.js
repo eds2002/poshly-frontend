@@ -28,7 +28,7 @@ export default function AccountsList(){
     },
     {
       name:'Settings',
-      func: () =>{
+      func: ()=>{
         setTab('Settings')
       },
       icon: <CogIcon className = " w-7 h-7"/>,
@@ -38,7 +38,7 @@ export default function AccountsList(){
           func: () =>{
             setSublink('Profile')
           },
-          icon: <UserIcon className = "w-5 h-5 "/>,
+          icon: <UserIcon className = "w-5 sm:h-5"/>,
         },
       ]
     },
@@ -66,10 +66,11 @@ export default function AccountsList(){
             >
 
               <span className = "flex items-center text-red-500 gap-x-3 ">
-              <span className = "mx-auto lg:mx-0">{currentTab.icon} </span>
-              <span className="hidden lg:block">{currentTab.name}</span></span>
+                <span className = "mx-auto lg:mx-0">{currentTab.icon} </span>
+                <span className="hidden lg:block">{currentTab.name}</span>
+              </span>
               {currentTab.subLink?.map((link,index)=>(
-                <li key = {index} className = {`items-center text-sm justify-start p-3 my-4 flex font-medium list-none lg:p-4 lg:items-start rounded-xl  cursor-pointer gap-x-3 
+                <li key = {index} className = {`items-center text-sm justify-start py-2 sm:p-3 my-4 flex font-medium list-none lg:p-4 lg:items-start rounded-xl  cursor-pointer gap-x-3 
                 ${theme === 'dark' && subLink === link.name ? ('text-red-500 bg-neutral-800 cursor-auto') : ('bg-neutral-700/20 ')}
                 ${theme === 'light' && subLink === link.name ? ('text-red-500 bg-white cursor-auto') : (' bg-gray-100  ')}
                 `}

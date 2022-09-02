@@ -71,8 +71,8 @@ export default function Home({currentUser}) {
           <h1 className = "text-3xl font-bold animate-pulse">Loading your data</h1>
         </div>
         :
-        <main>
-          <section className = {`w-full h-screen mx-auto overflow-hidden ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}>
+        <main className = "fixed inset-0">
+          <section className = {`w-full h-full mx-auto overflow-hidden ${theme === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}>
             <div className = "grid w-full h-full grid-cols-6">
                 <div className = {`flex flex-col justify-between w-full h-full p-2 rounded-tr-xl ${theme === 'dark' ? 'bg-neutral-800/50' : 'bg-white'} rounded-br-xl sm:p-4`}>
                     <h1 className = "w-full max-w-xs mt-10 ml-auto text-3xl font-semibold text-center text-white" onClick = {()=>setTab('Overview')}>

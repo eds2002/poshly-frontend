@@ -4,6 +4,8 @@ import { ItemsContext } from '../context/creditcards';
 import { UserContext } from '../context/signedUser';
 import { PlusIcon } from '@heroicons/react/solid';
 import { CreateLinkToken } from '../function/createLink';
+import { getAccountLiabilities } from '../function/getAccountLiabilities';
+import { getItemInfo } from '../function/getItemInfo';
 const PlaidButton = ({text, customCSS, removeOldItem}) => {
   const {signedUser} = useContext(UserContext)
   const [linkToken, setLinkToken] = useState(null)
@@ -80,22 +82,42 @@ const PlaidButton = ({text, customCSS, removeOldItem}) => {
         switch(code){
         // TODO, if all is successful adding into DB, add object into items array.
           case 201:
-            // const getItemResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/item/${data.access_token}`, {
-            //   method:"GET",
-            // })
-            // const getBalanceResponse = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/balance/${data.access_token}`, {
-            //   method:"GET",
-            // })
-            // const {institution} = await getItemResponse.json()
-            // const {accounts} = await getBalanceResponse.json()
-            // setBankAccounts(oldArray => [...oldArray, {
-            //   id:returningId,
-            //   institution: institution.name,
-            //   accounts:accounts
-            // }])
+            const userAccountsInfo = await getItemInfo([newItem])
+            const accountsLiabilities = await getAccountLiabilities([newItem])
+            // TODO, format items, bankaccounts, and bank account liabilities into one object
+            // NOTE, if theres an easier way of doing this pls redo
+            let formatAccounts = []
 
-            console.log('yo bro success man')
-            // setItem(oldArray=> [...oldArray, newItem])
+            // TODO, add to formatAccounts arr.
+            userAccountsInfo.forEach((userAccount)=>{
+              formatAccounts.push(userAccount)
+            })
+
+            // TODO, loop accountsLiabilities
+            accountsLiabilities.forEach((accountLiability)=>{
+              if(accountLiability.accounts){
+                // TODO, loop through format accounts, and check if theres a match
+                formatAccounts.forEach((account,formatAccountIndex)=>{
+                  accountLiability.liabilities?.credit?.forEach((accLiability)=>{
+                    // TODO, if theres a match between account ids, get the position number
+                    const pos = account.accounts?.findIndex(account=> account.account_id === accLiability.account_id)
+                    if(pos === undefined){
+                      return
+                    }
+
+                    // TODO, set new found information into array, positions formataccoutns using the formataccount index, and 
+                    // the accounts with  the new found position
+                    formatAccounts[formatAccountIndex].accounts[pos] = {...formatAccounts[formatAccountIndex].accounts[pos], accLiability } 
+                  })
+                })
+              }
+            })
+
+            console.log(formatAccounts)
+
+            const newArrBanks = bankAccounts
+            newArrBanks.push(formatAccounts[0])
+            setBankAccounts(newArrBanks)
             break;
         }
       }

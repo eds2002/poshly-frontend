@@ -3,6 +3,7 @@ import { ItemsContext } from "../context/creditcards"
 import PlaidButton from "./PlaidButton"
 import { TabContext } from "../context/currentTab"
 import { CreateLinkToken } from "../function/createLink"
+import { DotsHorizontalIcon } from '@heroicons/react/solid';
 
 export default function CreditCards({selected}){
   const {bankAccounts,setBankAccounts, setTransactions, setDisplayTransactions,setTransactionsId} = useContext(ItemsContext)
@@ -43,6 +44,23 @@ export default function CreditCards({selected}){
     setTab('Transactions')
     setDisplayTransactions(true)
   }
+
+  const deleteItem = async (id)=>{
+    const deleteItem = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/account/delete/${id}`,{
+      method:"DELETE",
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+       },
+    })
+    const {code,message} = await deleteItem.json()
+    if(code === 200){
+      const bankAccountsCopy = bankAccounts
+      const arrFilter = bankAccountsCopy.filter(account=> account.id != id)
+      setBankAccounts(arrFilter)
+    }
+  }
+
+  console.log(bankAccounts)
 
 
   return (
@@ -92,7 +110,7 @@ export default function CreditCards({selected}){
                     {bankAccount.accounts.map((acc)=>(
                       <>
                         {acc.subtype == 'credit card' && (
-                        <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
+                        <div className = "relative w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
                           <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
                           <div className = "mt-2">
                             <p className = "flex flex-col text-xl text-neutral-400">
@@ -103,6 +121,16 @@ export default function CreditCards({selected}){
                           <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
                           onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
                           >View Account</button>
+                          <div className = "absolute right-2 top-2">
+                            <div className = "relative w-full h-full group">
+                              <DotsHorizontalIcon className = "w-5 h-5 text-red-500 transition cursor-pointer group-hover:text-red-900"/>
+                              <div className = "absolute right-0 hidden w-40 transition rounded-lg shadow-xl bg-neutral-900 group-hover:block hover:bg-neutral-400">
+                                <p className = "px-4 py-2 text-base font-medium text-white cursor-pointer"
+                                onClick = {()=>deleteItem(bankAccount.id)}
+                                >Delete this account</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         )}
                       </>
@@ -125,7 +153,7 @@ export default function CreditCards({selected}){
                     {bankAccount.accounts.map((acc)=>(
                       <>
                         {acc.subtype == 'checking' && (
-                        <div className = "w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
+                        <div className = "relative w-full grid-cols-1 px-4 py-6 transition rounded-lg shadow-xl bg-neutral-800" key = {acc.account_id}>
                           <h1 className = "text-2xl font-medium text-white">{acc.official_name}</h1>
                           <div className = "mt-2">
                             <p className = "flex flex-col text-xl text-neutral-400">
@@ -136,6 +164,16 @@ export default function CreditCards({selected}){
                           <button className = 'w-full px-4 py-2 mt-4 font-medium text-white transition bg-red-500 rounded-lg hover:bg-red-500/75'
                           onClick = {()=>viewTransactions(bankAccount.accessToken, acc.account_id)}
                           >View Account</button>
+                          <div className = "absolute right-2 top-2">
+                            <div className = "relative w-full h-full group">
+                              <DotsHorizontalIcon className = "w-5 h-5 text-red-500 transition cursor-pointer group-hover:text-red-900"/>
+                              <div className = "absolute right-0 hidden w-40 transition rounded-lg shadow-xl bg-neutral-900 group-hover:block hover:bg-neutral-400">
+                                <p className = "px-4 py-2 text-base font-medium text-white cursor-pointer"
+                                onClick = {()=>deleteItem(bankAccount.id)}
+                                >Delete this account</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         )}
                       </>

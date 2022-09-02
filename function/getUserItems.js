@@ -17,7 +17,7 @@ export const getUserItems = async (userId) =>{
   const {code,message,accounts} = await getItemsResponse.json()
   switch(code){
     case 404:
-      return("idk bro some fat ass error going on rn")
+      return(`ERROR: ${message}`)
     case 200:
       return (accounts)
   }
