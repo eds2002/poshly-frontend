@@ -3,6 +3,8 @@ import Input from '../components/Input'
 import { useState } from 'react';
 import Button from '../components/Button'
 import {useRouter} from 'next/router'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Login = () => {
   const router = useRouter()
@@ -85,22 +87,26 @@ const Login = () => {
 
   return (
     <main>
-      <section className = "flex flex-col items-center justify-center w-full h-screen bg-neutral-900">
-        <div className = "max-w-sm px-6 mx-auto md:max-w-md lg:max-w-lg">
-          <div>
-            <h1 className = "text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">Login to your account.</h1>
-            <p className = "mt-2 mb-5 text-sm text-neutral-400 sm:text-base">Hi, welcome back user.</p>
+    <div className = "h-screen overflow-y-scroll">
+        <Navbar/>
+        <section className = "flex flex-col items-center justify-center w-full h-[90%] bg-neutral-900">
+          <div className = "max-w-sm px-6 mx-auto md:max-w-md lg:max-w-lg">
+            <div>
+              <h1 className = "text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">Login to your account.</h1>
+              <p className = "mt-2 mb-5 text-sm text-neutral-400 sm:text-base">Hi, welcome back user.</p>
+            </div>
+            <form className = "flex flex-col items-center justify-center w-full bg-neutral-900/50 rounded-xl"
+            onSubmit = {(e)=>handleSubmit(e)}
+            >
+              {inputs.map((input,index)=>(
+                  <Input {...input} onChange = {onChange} key = {index}/>
+              ))}
+              <Button text = "Sign in" customCSS={'mt-5'} disabled = {disabled}/>
+            </form>
           </div>
-          <form className = "flex flex-col items-center justify-center w-full bg-neutral-900/50 rounded-xl"
-          onSubmit = {(e)=>handleSubmit(e)}
-          >
-            {inputs.map((input,index)=>(
-                <Input {...input} onChange = {onChange} key = {index}/>
-            ))}
-            <Button text = "Create account" customCSS={'mt-5'} disabled = {disabled}/>
-          </form>
-        </div>
-      </section>
+        </section>
+        <Footer/>
+    </div>
     </main>
   )
 }

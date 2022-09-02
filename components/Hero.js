@@ -4,10 +4,12 @@ import Button from './Button'
 
 const Hero = () => {
   return (
-    <div className = "flex items-center justify-start w-full h-full ">
+    <div className = "flex items-center justify-start w-full h-[80%] px-4 mx-auto max-w-7xl">
       <div className = "flex flex-col items-start justify-center">
-        <p className = "text-5xl font-medium text-neutral-200">Careless spending? </p>
-        <p className = "mb-6 font-medium text-white text-7xl"> Not with <span className = "font-semibold text-red-500">Poshly.</span></p>
+        <p className = "text-3xl font-medium xl:text-4xl text-neutral-200">Careless spending? Not with <span className = "font-semibold text-red-500">Poshly.</span></p>
+        <p className = "max-w-sm mt-2 mb-5 text-base text-neutral-300 xl:text-lg">
+          You will never miss another payment again with Poshly.
+        </p>
         <div className = "flex items-center justify-center">
           <Link href = "/register">
             <a>
