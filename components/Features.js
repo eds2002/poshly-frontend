@@ -34,7 +34,7 @@ const Features = () => {
     <section className = "w-full py-24 bg-image rounded-tr-3xl rounded-tl-3xl" id = "features">
       <div className = "px-4 mx-auto max-w-7xl">
         <div className = "">
-          <h1 className = "max-w-md text-3xl font-medium text-red-500">It's time to become financially successful.</h1>
+          <h1 className = "max-w-md text-3xl font-medium text-red-500">It&apos;s time to become financially successful.</h1>
           <p className = "max-w-md mt-4 text-base md:text-lg text-neutral-400">
           Poshly was built for those for who use multiple credit cards and are trying to get control of their finances. 
           </p>

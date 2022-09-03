@@ -20,7 +20,7 @@ const Footer = () => {
         <p className = "mt-2 text-lg text-neutral-400">Financial freedom starts here.</p>
         <ul className = "flex items-center mt-10 text-neutral-400 gap-x-4">
           {nav.map((link)=>(
-            <Link href = {link.href}>
+            <Link href = {link.href} key = {link.name}>
               <a>
                 <li className = "px-4 transition duration-500 rounded-md bg-neutral-900 hover:bg-red-500 hover:text-white">{link.name}</li>
               </a>
